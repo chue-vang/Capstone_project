@@ -7,9 +7,12 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using HersFlowers.Data;
 using HersFlowers.Models;
+using System.Security.Claims;
+using Microsoft.AspNetCore.Authorization;
 
 namespace HersFlowers.Controllers
 {
+    [Authorize(Roles = "Owner")]
     public class OwnersController : Controller
     {
         private readonly ApplicationDbContext _context;
@@ -20,28 +23,30 @@ namespace HersFlowers.Controllers
         }
 
         // GET: Owners
-        public async Task<IActionResult> Index()
+        public IActionResult Index()
         {
-            var applicationDbContext = _context.Owners.Include(o => o.IdentityUser);
-            return View(await applicationDbContext.ToListAsync());
+            var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var owner = _context.Owners.Where(c => c.IdentityUserId == userId).SingleOrDefault();
+
+            if (owner == null)
+            {
+                return RedirectToAction(nameof(Create));
+            }
+            else
+            {
+                var allRequestedMeetings = _context.Requests;
+                return View(allRequestedMeetings);
+            }
         }
 
         // GET: Owners/Details/5
-        public async Task<IActionResult> Details(int? id)
+        public IActionResult Details(int? id)
         {
             if (id == null)
             {
                 return NotFound();
             }
-
-            var owner = await _context.Owners
-                .Include(o => o.IdentityUser)
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (owner == null)
-            {
-                return NotFound();
-            }
-
+            var owner = _context.Owners.SingleOrDefault(m => m.Id == id);
             return View(owner);
         }
 
@@ -57,16 +62,20 @@ namespace HersFlowers.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,FirstName,LastName,Email,IdentityUserId")] Owner owner)
+        public IActionResult Create([Bind("Id,FirstName,LastName,Email,IdentityUserId")] Owner owner)
         {
-            if (ModelState.IsValid)
+            try
             {
+                var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
+                owner.IdentityUserId = userId;
                 _context.Add(owner);
-                await _context.SaveChangesAsync();
+                _context.SaveChanges();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["IdentityUserId"] = new SelectList(_context.Users, "Id", "Id", owner.IdentityUserId);
-            return View(owner);
+            catch
+            {
+                return View(owner);
+            }
         }
 
         // GET: Owners/Edit/5

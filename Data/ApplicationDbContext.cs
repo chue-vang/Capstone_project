@@ -22,7 +22,6 @@ namespace HersFlowers.Data
         }
         protected override void OnModelCreating(ModelBuilder builder)
         {
-
             base.OnModelCreating(builder);
 
             builder.Entity<IdentityRole>()
@@ -41,26 +40,26 @@ namespace HersFlowers.Data
             }
             );
 
-            builder.Entity<Owner>()
-            .HasData(
-             new Owner
-             {
-                 Id = 1,
-                 FirstName = "Aerith",
-                 LastName = "Gainsborough",
-                 Email = "aerith@owner"
-             });
+            //builder.Entity<Owner>()
+            //.HasData(
+            // new Owner
+            // {
+            //     Id = 1,
+            //     FirstName = "Aerith",
+            //     LastName = "Gainsborough",
+            //     Email = "aerith@owner"
+            // });
 
-            builder.Entity<Customer>()
-            .HasData(
-             new Customer
-             {
-                 Id = 1,
-                 FirstName = "Cloud",
-                 LastName = "Strife",
-                 Email = "cloud@customer",
-                 PhoneNumber = 7777777777,
-             });
+            //builder.Entity<Customer>()
+            //.HasData(
+            // new Customer
+            // {
+            //     Id = 1,
+            //     FirstName = "Cloud",
+            //     LastName = "Strife",
+            //     Email = "cloud@customer",
+            //     PhoneNumber = 7777777777,
+            // });
 
             builder.Entity<Flower>()
             .HasData(

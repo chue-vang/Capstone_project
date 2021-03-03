@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
-namespace HersFlowers.Data.Migrations
+namespace HersFlowers.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
     partial class ApplicationDbContextModelSnapshot : ModelSnapshot
@@ -49,16 +49,6 @@ namespace HersFlowers.Data.Migrations
                     b.HasIndex("IdentityUserId");
 
                     b.ToTable("Customers");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Email = "cloud@customer",
-                            FirstName = "Cloud",
-                            LastName = "Strife",
-                            PhoneNumber = 7777777777.0
-                        });
                 });
 
             modelBuilder.Entity("HersFlowers.Models.Flower", b =>
@@ -129,15 +119,6 @@ namespace HersFlowers.Data.Migrations
                     b.HasIndex("IdentityUserId");
 
                     b.ToTable("Owners");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Email = "aerith@owner",
-                            FirstName = "Aerith",
-                            LastName = "Gainsborough"
-                        });
                 });
 
             modelBuilder.Entity("HersFlowers.Models.Request", b =>
@@ -147,7 +128,7 @@ namespace HersFlowers.Data.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("CustomerId")
+                    b.Property<int?>("CustomerId")
                         .HasColumnType("int");
 
                     b.Property<DateTime?>("Date")
@@ -160,6 +141,8 @@ namespace HersFlowers.Data.Migrations
                         .HasColumnType("datetime2");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("CustomerId");
 
                     b.ToTable("Requests");
                 });
@@ -214,15 +197,15 @@ namespace HersFlowers.Data.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "f6ea08e6-aeaf-47dd-b5c6-73bb624a822f",
-                            ConcurrencyStamp = "3e38db94-c574-4deb-97b9-88319f79ddd8",
+                            Id = "8ddcb994-59ad-45ba-9cca-cc48e6ccd358",
+                            ConcurrencyStamp = "21d96501-b98b-4cc9-837c-a5ff537b4c6c",
                             Name = "Owner",
                             NormalizedName = "OWNER"
                         },
                         new
                         {
-                            Id = "5ea1898b-f93b-4efb-9008-bc37c3feb4e7",
-                            ConcurrencyStamp = "cf9b66a2-1a38-4b17-8d2c-c860ff330513",
+                            Id = "dc14f68e-7d3c-4e00-b77f-0aaa61823dca",
+                            ConcurrencyStamp = "d6326d64-0a87-468b-b6d4-543927d0c094",
                             Name = "Customer",
                             NormalizedName = "CUSTOMER"
                         });
@@ -409,6 +392,13 @@ namespace HersFlowers.Data.Migrations
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", "IdentityUser")
                         .WithMany()
                         .HasForeignKey("IdentityUserId");
+                });
+
+            modelBuilder.Entity("HersFlowers.Models.Request", b =>
+                {
+                    b.HasOne("HersFlowers.Models.Customer", "Customer")
+                        .WithMany()
+                        .HasForeignKey("CustomerId");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

@@ -110,6 +110,14 @@ namespace HersFlowers.Areas.Identity.Pages.Account
                     else
                     {
                         await _signInManager.SignInAsync(user, isPersistent: false);
+                        if(Input.Role == "Owner")
+                        {
+                            return RedirectToAction("Create", "Owners");
+                        }
+                        else if (Input.Role == "Customer")
+                        {
+                            return RedirectToAction("Create", "Customers");
+                        }
                         return LocalRedirect(returnUrl);
                     }
                 }

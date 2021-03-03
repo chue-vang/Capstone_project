@@ -16,6 +16,7 @@ namespace HersFlowers.Models
         public string? Message { get; set; }
 
         [ForeignKey("Customer")]
-        public int CustomerId { get; set; }
+        public int? CustomerId { get; set; }
+        public Customer Customer { get; set; }
     }
 }

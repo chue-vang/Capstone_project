@@ -23,12 +23,12 @@ namespace HersFlowers.ActionFilters
                 if (_claimsPrincipal.IsInRole("Owner"))
                 {
                     context.Result = new RedirectToActionResult("Index",
-                    "Owner", null);
+                    "Owners", null);
                 }
                 else if (_claimsPrincipal.IsInRole("Customer"))
                 {
                     context.Result = new RedirectToActionResult("Index",
-                    "Customer", null);
+                    "Customers", null);
                 }
             }
         }

@@ -7,9 +7,12 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using HersFlowers.Data;
 using HersFlowers.Models;
+using System.Security.Claims;
+using Microsoft.AspNetCore.Authorization;
 
 namespace HersFlowers.Controllers
 {
+    [Authorize(Roles = "Customer")]
     public class CustomersController : Controller
     {
         private readonly ApplicationDbContext _context;
@@ -20,28 +23,29 @@ namespace HersFlowers.Controllers
         }
 
         // GET: Customers
-        public async Task<IActionResult> Index()
+        public IActionResult Index()
         {
-            var applicationDbContext = _context.Customers.Include(c => c.IdentityUser);
-            return View(await applicationDbContext.ToListAsync());
+            var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var customer = _context.Customers.Where(c => c.IdentityUserId == userId).SingleOrDefault();
+
+            if (customer == null)
+            {
+                return RedirectToAction(nameof(Create));
+            }
+            else
+            {
+                return RedirectToAction("Index");
+            }
         }
 
         // GET: Customers/Details/5
-        public async Task<IActionResult> Details(int? id)
+        public IActionResult Details(int? id)
         {
             if (id == null)
             {
                 return NotFound();
             }
-
-            var customer = await _context.Customers
-                .Include(c => c.IdentityUser)
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (customer == null)
-            {
-                return NotFound();
-            }
-
+            var customer = _context.Customers.SingleOrDefault(m => m.Id == id);
             return View(customer);
         }
 
@@ -57,16 +61,20 @@ namespace HersFlowers.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,FirstName,LastName,Email,PhoneNumber,Subscribe,IdentityUserId")] Customer customer)
+        public IActionResult Create([Bind("Id,FirstName,LastName,Email,PhoneNumber,Subscribe,IdentityUserId")] Customer customer)
         {
-            if (ModelState.IsValid)
+            try
             {
+                var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
+                customer.IdentityUserId = userId;
                 _context.Add(customer);
-                await _context.SaveChangesAsync();
+                _context.SaveChanges();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["IdentityUserId"] = new SelectList(_context.Users, "Id", "Id", customer.IdentityUserId);
-            return View(customer);
+            catch
+            {
+                return View(customer);
+            }
         }
 
         // GET: Customers/Edit/5

@@ -34,7 +34,7 @@ namespace HersFlowers.Controllers
             }
             else
             {
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", "Customers");
             }
         }
 
@@ -99,37 +99,23 @@ namespace HersFlowers.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,FirstName,LastName,Email,PhoneNumber,Subscribe,IdentityUserId")] Customer customer)
+        public IActionResult Edit(int id, [Bind("Id,FirstName,LastName,Email,PhoneNumber,Subscribe,IdentityUserId")] Customer customer)
         {
-            if (id != customer.Id)
+            try
             {
-                return NotFound();
-            }
-
-            if (ModelState.IsValid)
-            {
-                try
-                {
-                    _context.Update(customer);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!CustomerExists(customer.Id))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
+                var customerEdit = _context.Customers.Single(c => c.Id == customer.Id);
+                customerEdit.FirstName = customer.FirstName;
+                customerEdit.LastName = customer.LastName;
+                customerEdit.Email = customer.Email;
+                customerEdit.PhoneNumber = customer.PhoneNumber;
+                _context.SaveChanges();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["IdentityUserId"] = new SelectList(_context.Users, "Id", "Id", customer.IdentityUserId);
-            return View(customer);
+            catch
+            {
+                return View();
+            }
         }
-
         // GET: Customers/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {

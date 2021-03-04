@@ -100,35 +100,21 @@ namespace HersFlowers.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,FirstName,LastName,Email,IdentityUserId")] Owner owner)
+        public IActionResult Edit(int id, [Bind("Id,FirstName,LastName,Email,IdentityUserId")] Owner owner)
         {
-            if (id != owner.Id)
+            try
             {
-                return NotFound();
-            }
-
-            if (ModelState.IsValid)
-            {
-                try
-                {
-                    _context.Update(owner);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!OwnerExists(owner.Id))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
+                var ownerEdit = _context.Owners.Single(o => o.Id == owner.Id);
+                ownerEdit.FirstName = owner.FirstName;
+                ownerEdit.LastName = owner.LastName;
+                ownerEdit.Email = owner.Email;
+                _context.SaveChanges();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["IdentityUserId"] = new SelectList(_context.Users, "Id", "Id", owner.IdentityUserId);
-            return View(owner);
+            catch
+            {
+                return View();
+            }
         }
 
         // GET: Owners/Delete/5

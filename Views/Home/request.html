@@ -1,0 +1,45 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Appointment Request</title>
+</head>
+<body>
+    <div>
+        <form>
+            <div class="form-outline mb-4">
+                <input type="text" id="FirstName" class="form-control" />
+                <label class="form-label" for="FirstName">First Name</label>
+            </div>
+
+            <div class="form-outline mb-4">
+                <input type="text" id="LastName" class="form-control" />
+                <label class="form-label" for="LastName">Last Name</label>
+            </div>
+
+            <div class="form-outline mb-4">
+                <input type="tel" id="PhoneNumber" class="form-control" placeholder="Phone Number"/>
+                <label class="form-label" for="PhoneNumber">Phone Number </label>
+            </div>
+
+            <div class="form-outline mb-4">
+                <textarea class="form-control" id="Message" rows="4"></textarea>
+                <label class="form-label" for="Message">Message</label>
+            </div>
+
+            <div class="form-check d-flex justify-content-center mb-4">
+                <input class="form-check-input me-2"
+                       type="checkbox"
+                       value=""
+                       id="Subscribe"
+                       checked />
+                <label class="form-check-label" for="Subscribe">
+                    Subscribe to a monthly email to see what flowers we have!
+                </label>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-block mb-4">Send</button>
+        </form>
+    </div>
+</body>
+</html>

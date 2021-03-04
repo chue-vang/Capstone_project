@@ -1,5 +1,6 @@
 ﻿using HersFlowers.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Docs.Samples;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
@@ -24,6 +25,11 @@ namespace HersFlowers.Controllers
         }
 
         public IActionResult Privacy()
+        {
+            return View();
+        }
+
+        public IActionResult About()
         {
             return View();
         }

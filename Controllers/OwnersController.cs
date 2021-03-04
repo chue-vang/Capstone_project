@@ -91,7 +91,7 @@ namespace HersFlowers.Controllers
             {
                 return NotFound();
             }
-            //ViewData["IdentityUserId"] = new SelectList(_context.Users, "Id", "Id", owner.IdentityUserId);
+            ViewData["IdentityUserId"] = new SelectList(_context.Users, "Id", "Id", owner.IdentityUserId);
             return View(owner);
         }
 

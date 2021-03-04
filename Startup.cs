@@ -75,6 +75,18 @@ namespace HersFlowers
                     pattern: "{controller=Home}/{action=Index}/{id?}");
                 endpoints.MapRazorPages();
             });
+
+            //app.UseEndpoints(endpoints =>
+            //{
+            //    endpoints.MapControllerRoute(
+            //        name: "about",
+            //        pattern: "{controller=Home}/{action=About}");
+            //    endpoints.MapRazorPages();
+
+
+            //});
+
+
         }
     }
 }

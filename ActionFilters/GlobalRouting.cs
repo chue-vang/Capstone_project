@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using HersFlowers.Data;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using System;
 using System.Collections.Generic;
@@ -32,6 +33,20 @@ namespace HersFlowers.ActionFilters
                 }
             }
         }
+
+        //public void OnActionExecuted(ActionExecutedContext context, )
+        //{
+        //    var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
+        //    var customer = _context.Customers.Where(c => c.IdentityUserId == userId).SingleOrDefault();
+        //    if (customer == null)
+        //    {
+        //        return RedirectToAction("Index", "Customers");
+        //    }
+        //    else (customer == )
+        //    {
+        //        return RedirectToAction("Index", "Owners");
+        //    }
+        //}
 
         public void OnActionExecuting(ActionExecutingContext context)
         {

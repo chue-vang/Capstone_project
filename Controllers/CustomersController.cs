@@ -26,7 +26,7 @@ namespace HersFlowers.Controllers
         public IActionResult Index()
         {
             var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
-            var customer = _context.Customers.Where(c => c.IdentityUserId == userId).FirstOrDefault();
+            var customer = _context.Customers.Where(c => c.IdentityUserId == userId).SingleOrDefault();
 
             if (customer == null)
             {
@@ -34,18 +34,14 @@ namespace HersFlowers.Controllers
             }
             else
             {
-                return RedirectToAction("Index", "Customers");
+                return View(customer);
             }
         }
 
         // GET: Customers/Details/5
-        public IActionResult Details(int? id)
+        public ActionResult Details(int id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
-            var customer = _context.Customers.SingleOrDefault(m => m.Id == id);
+            var customer = _context.Customers.Include(c => c.Id).SingleOrDefault(m => m.Id == id);
             return View(customer);
         }
 

@@ -26,7 +26,7 @@ namespace HersFlowers.Controllers
         public IActionResult Index()
         {
             var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
-            var customer = _context.Customers.Where(c => c.IdentityUserId == userId).SingleOrDefault();
+            var customer = _context.Customers.Where(c => c.IdentityUserId == userId).FirstOrDefault();
 
             if (customer == null)
             {

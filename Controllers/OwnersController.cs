@@ -34,6 +34,7 @@ namespace HersFlowers.Controllers
             }
             else
             {
+                ViewBag.Id = owner.Id;
                 var allRequestedMeetings = _context.Requests;
                 return View(allRequestedMeetings);
             }
@@ -85,13 +86,12 @@ namespace HersFlowers.Controllers
             {
                 return NotFound();
             }
-
             var owner = await _context.Owners.FindAsync(id);
             if (owner == null)
             {
                 return NotFound();
             }
-            ViewData["IdentityUserId"] = new SelectList(_context.Users, "Id", "Id", owner.IdentityUserId);
+            //ViewData["IdentityUserId"] = new SelectList(_context.Users, "Id", "Id", owner.IdentityUserId);
             return View(owner);
         }
 

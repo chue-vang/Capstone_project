@@ -24,12 +24,20 @@ namespace HersFlowers.Controllers
             return View();
         }
 
-        public IActionResult Privacy()
+        //public IActionResult Privacy()
+        //{
+        //    return View();
+        //}
+
+        public IActionResult About()
         {
             return View();
         }
-
-        public IActionResult About()
+        public IActionResult RequestAppointment()
+        {
+            return View();
+        }
+        public IActionResult Services()
         {
             return View();
         }

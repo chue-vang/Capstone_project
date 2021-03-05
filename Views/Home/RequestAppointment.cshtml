@@ -1,0 +1,34 @@
+﻿@page
+@model HersFlowers.Views.Home.RequestModel
+@{
+}
+<div>
+    <form>
+        <div class="form-outline mb-4">
+            <label class="form-label" for="FirstName">First Name</label>
+            <input type="text" id="FirstName" class="form-control" />
+        </div>
+
+        <div class="form-outline mb-4">
+            <label class="form-label" for="LastName">Last Name</label>
+            <input type="text" id="LastName" class="form-control" />
+        </div>
+
+        <div class="form-outline mb-4">
+            <label class="form-label" for="PhoneNumber">Phone Number </label>
+            <input type="tel" id="PhoneNumber" class="form-control" />
+        </div>
+
+        <div class="form-outline mb-4">
+            <label class="form-label" for="Message">Message</label>
+            <textarea class="form-control" id="Message" rows="4"></textarea>
+        </div>
+
+        <div class="form-check d-flex justify-content-center mb-4">
+            <label class="form-check-label" for="Subscribe">Subscribe to a monthly email to see what flowers we have!</label>
+            <input class="form-check-input me-2" type="checkbox" value="" id="Subscribe" checked />
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-block mb-4">Send</button>
+    </form>
+</div>

@@ -16,6 +16,7 @@ namespace HersFlowers.Data
         public DbSet<ShoppingCartItem> ShoppingCarItems { get; set; }
         public DbSet<Request> Requests { get; set; }
         public DbSet<Image> Images { get; set; }
+        public DbSet<MeetingDay> MeetingDays { get; set; }
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
         {

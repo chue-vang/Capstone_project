@@ -73,6 +73,19 @@ namespace HersFlowers.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "MeetingDays",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Date = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_MeetingDays", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "ShoppingCarItems",
                 columns: table => new
                 {
@@ -269,8 +282,8 @@ namespace HersFlowers.Migrations
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
                 values: new object[,]
                 {
-                    { "3ae4de98-1ea5-4100-bd45-dc79d7e41f2d", "32547d65-7bce-4304-bff7-f8ccace835ca", "Owner", "OWNER" },
-                    { "97a154bc-a8fb-4ea5-9b6e-0f92164e710f", "c0a3b01b-3e96-4c57-81ca-670adb1b3092", "Customer", "CUSTOMER" }
+                    { "e1f423da-319b-4c0a-9193-5eab874a395b", "1e9ddc74-94d8-4ca5-afdb-3d61743e94e3", "Owner", "OWNER" },
+                    { "edcba12f-8948-4e59-9b2e-7094c868ceff", "b88e85ee-e55f-4eae-be94-46bf2c925446", "Customer", "CUSTOMER" }
                 });
 
             migrationBuilder.InsertData(
@@ -359,6 +372,9 @@ namespace HersFlowers.Migrations
 
             migrationBuilder.DropTable(
                 name: "Images");
+
+            migrationBuilder.DropTable(
+                name: "MeetingDays");
 
             migrationBuilder.DropTable(
                 name: "Owners");

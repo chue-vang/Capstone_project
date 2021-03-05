@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace HersFlowers.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20210305185731_init")]
+    [Migration("20210305195834_init")]
     partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -95,6 +95,21 @@ namespace HersFlowers.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Images");
+                });
+
+            modelBuilder.Entity("HersFlowers.Models.MeetingDay", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Date")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("MeetingDays");
                 });
 
             modelBuilder.Entity("HersFlowers.Models.Owner", b =>
@@ -208,15 +223,15 @@ namespace HersFlowers.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "3ae4de98-1ea5-4100-bd45-dc79d7e41f2d",
-                            ConcurrencyStamp = "32547d65-7bce-4304-bff7-f8ccace835ca",
+                            Id = "e1f423da-319b-4c0a-9193-5eab874a395b",
+                            ConcurrencyStamp = "1e9ddc74-94d8-4ca5-afdb-3d61743e94e3",
                             Name = "Owner",
                             NormalizedName = "OWNER"
                         },
                         new
                         {
-                            Id = "97a154bc-a8fb-4ea5-9b6e-0f92164e710f",
-                            ConcurrencyStamp = "c0a3b01b-3e96-4c57-81ca-670adb1b3092",
+                            Id = "edcba12f-8948-4e59-9b2e-7094c868ceff",
+                            ConcurrencyStamp = "b88e85ee-e55f-4eae-be94-46bf2c925446",
                             Name = "Customer",
                             NormalizedName = "CUSTOMER"
                         });

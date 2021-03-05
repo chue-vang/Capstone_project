@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace HersFlowers.Models
 {
-    public class ShoppingCarItem
+    public class ShoppingCartItem
     {
         [Key]
         public int Id { get; set; }

@@ -134,8 +134,17 @@ namespace HersFlowers.Migrations
                     b.Property<DateTime?>("Date")
                         .HasColumnType("datetime2");
 
+                    b.Property<string>("FirstName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LastName")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Message")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<double>("PhoneNumber")
+                        .HasColumnType("float");
 
                     b.Property<DateTime?>("Time")
                         .HasColumnType("datetime2");
@@ -147,7 +156,7 @@ namespace HersFlowers.Migrations
                     b.ToTable("Requests");
                 });
 
-            modelBuilder.Entity("HersFlowers.Models.ShoppingCarItem", b =>
+            modelBuilder.Entity("HersFlowers.Models.ShoppingCartItem", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -197,15 +206,15 @@ namespace HersFlowers.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "8ddcb994-59ad-45ba-9cca-cc48e6ccd358",
-                            ConcurrencyStamp = "21d96501-b98b-4cc9-837c-a5ff537b4c6c",
+                            Id = "3ae4de98-1ea5-4100-bd45-dc79d7e41f2d",
+                            ConcurrencyStamp = "32547d65-7bce-4304-bff7-f8ccace835ca",
                             Name = "Owner",
                             NormalizedName = "OWNER"
                         },
                         new
                         {
-                            Id = "dc14f68e-7d3c-4e00-b77f-0aaa61823dca",
-                            ConcurrencyStamp = "d6326d64-0a87-468b-b6d4-543927d0c094",
+                            Id = "97a154bc-a8fb-4ea5-9b6e-0f92164e710f",
+                            ConcurrencyStamp = "c0a3b01b-3e96-4c57-81ca-670adb1b3092",
                             Name = "Customer",
                             NormalizedName = "CUSTOMER"
                         });

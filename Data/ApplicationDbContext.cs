@@ -13,7 +13,7 @@ namespace HersFlowers.Data
         public DbSet<Owner> Owners { get; set; }
         public DbSet<Customer> Customers { get; set; }
         public DbSet<Flower> Flowers { get; set; }
-        public DbSet<ShoppingCarItem> ShoppingCarItems { get; set; }
+        public DbSet<ShoppingCartItem> ShoppingCarItems { get; set; }
         public DbSet<Request> Requests { get; set; }
         public DbSet<Image> Images { get; set; }
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)

@@ -33,10 +33,10 @@ namespace HersFlowers.Controllers
         {
             return View();
         }
-        public IActionResult RequestAppointment()
-        {
-            return View();
-        }
+        //public IActionResult RequestAppointment()
+        //{
+        //    return View();
+        //}
         public IActionResult Services()
         {
             return View();

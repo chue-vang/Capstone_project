@@ -47,6 +47,19 @@ namespace HersFlowers.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "DayOfTheWeeks",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Day = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_DayOfTheWeeks", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Flowers",
                 columns: table => new
                 {
@@ -269,8 +282,22 @@ namespace HersFlowers.Migrations
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
                 values: new object[,]
                 {
-                    { "3ae4de98-1ea5-4100-bd45-dc79d7e41f2d", "32547d65-7bce-4304-bff7-f8ccace835ca", "Owner", "OWNER" },
-                    { "97a154bc-a8fb-4ea5-9b6e-0f92164e710f", "c0a3b01b-3e96-4c57-81ca-670adb1b3092", "Customer", "CUSTOMER" }
+                    { "00dcfb1b-48da-4b34-a6d8-2a4c04ebb1f2", "30cb8f57-84f6-40d4-a6cb-e15e2f333319", "Owner", "OWNER" },
+                    { "0721c6ab-c7f4-40dc-be94-e37c49e73352", "ca787889-91ae-4d12-bfb8-de02531e4417", "Customer", "CUSTOMER" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "DayOfTheWeeks",
+                columns: new[] { "Id", "Day" },
+                values: new object[,]
+                {
+                    { 1, "Sunday" },
+                    { 2, "Monday" },
+                    { 3, "Tuesday" },
+                    { 4, "Wednesday" },
+                    { 5, "Thursday" },
+                    { 6, "Friday" },
+                    { 7, "Saturday" }
                 });
 
             migrationBuilder.InsertData(
@@ -353,6 +380,9 @@ namespace HersFlowers.Migrations
 
             migrationBuilder.DropTable(
                 name: "AspNetUserTokens");
+
+            migrationBuilder.DropTable(
+                name: "DayOfTheWeeks");
 
             migrationBuilder.DropTable(
                 name: "Flowers");

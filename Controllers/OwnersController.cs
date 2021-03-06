@@ -10,6 +10,7 @@ using HersFlowers.Models;
 using System.Security.Claims;
 using Microsoft.AspNetCore.Authorization;
 
+
 namespace HersFlowers.Controllers
 {
     [Authorize(Roles = "Owner")]
@@ -39,6 +40,33 @@ namespace HersFlowers.Controllers
                 return View(allRequestedMeetings);
             }
         }
+
+        //filter meetings by day
+        public IActionResult FilterMeetingByDay(int id)
+        {
+            //var request = _context.Requests.SingleOrDefault(c => c.Id == id);
+            //if (request == null)
+            //{
+            //    return NotFound();
+            //}
+            //request.FilterDays = new SelectList(_context.DayOfTheWeeks.ToList(), "Id", "Day");
+            //return View(request);
+
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        //public IActionResult FilterMeetingByDay(Request request)
+        //{
+        //    DayOfTheWeek newDayOfTheWeek = new DayOfTheWeek();
+
+        //    string currentDayOfWeek = DateTime.Today.DayOfWeek.ToString();
+        //    var day = new SelectList(_context.DayOfTheWeeks.ToList(), "Id", "Day");
+        //    string today = day.ToString();
+        //    var filterByDay = _context.Requests.Where(r => r.Date.ToString() == currentDayOfWeek).Include(c => 
+        //    return View(filterByDay);
+        //}
 
         // GET: Owners/Details/5
         public IActionResult Details(int? id)

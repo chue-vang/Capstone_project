@@ -51,6 +51,58 @@ namespace HersFlowers.Migrations
                     b.ToTable("Customers");
                 });
 
+            modelBuilder.Entity("HersFlowers.Models.DayOfTheWeek", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Day")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("DayOfTheWeeks");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Day = "Sunday"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Day = "Monday"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Day = "Tuesday"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Day = "Wednesday"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Day = "Thursday"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            Day = "Friday"
+                        },
+                        new
+                        {
+                            Id = 7,
+                            Day = "Saturday"
+                        });
+                });
+
             modelBuilder.Entity("HersFlowers.Models.Flower", b =>
                 {
                     b.Property<int>("Id")
@@ -206,15 +258,15 @@ namespace HersFlowers.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "3ae4de98-1ea5-4100-bd45-dc79d7e41f2d",
-                            ConcurrencyStamp = "32547d65-7bce-4304-bff7-f8ccace835ca",
+                            Id = "00dcfb1b-48da-4b34-a6d8-2a4c04ebb1f2",
+                            ConcurrencyStamp = "30cb8f57-84f6-40d4-a6cb-e15e2f333319",
                             Name = "Owner",
                             NormalizedName = "OWNER"
                         },
                         new
                         {
-                            Id = "97a154bc-a8fb-4ea5-9b6e-0f92164e710f",
-                            ConcurrencyStamp = "c0a3b01b-3e96-4c57-81ca-670adb1b3092",
+                            Id = "0721c6ab-c7f4-40dc-be94-e37c49e73352",
+                            ConcurrencyStamp = "ca787889-91ae-4d12-bfb8-de02531e4417",
                             Name = "Customer",
                             NormalizedName = "CUSTOMER"
                         });

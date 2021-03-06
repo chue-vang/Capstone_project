@@ -47,6 +47,19 @@ namespace HersFlowers.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "DayOfTheWeeks",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Day = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_DayOfTheWeeks", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Flowers",
                 columns: table => new
                 {
@@ -70,19 +83,6 @@ namespace HersFlowers.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Images", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "MeetingDays",
-                columns: table => new
-                {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Date = table.Column<string>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_MeetingDays", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -282,8 +282,22 @@ namespace HersFlowers.Migrations
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
                 values: new object[,]
                 {
-                    { "e1f423da-319b-4c0a-9193-5eab874a395b", "1e9ddc74-94d8-4ca5-afdb-3d61743e94e3", "Owner", "OWNER" },
-                    { "edcba12f-8948-4e59-9b2e-7094c868ceff", "b88e85ee-e55f-4eae-be94-46bf2c925446", "Customer", "CUSTOMER" }
+                    { "00dcfb1b-48da-4b34-a6d8-2a4c04ebb1f2", "30cb8f57-84f6-40d4-a6cb-e15e2f333319", "Owner", "OWNER" },
+                    { "0721c6ab-c7f4-40dc-be94-e37c49e73352", "ca787889-91ae-4d12-bfb8-de02531e4417", "Customer", "CUSTOMER" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "DayOfTheWeeks",
+                columns: new[] { "Id", "Day" },
+                values: new object[,]
+                {
+                    { 1, "Sunday" },
+                    { 2, "Monday" },
+                    { 3, "Tuesday" },
+                    { 4, "Wednesday" },
+                    { 5, "Thursday" },
+                    { 6, "Friday" },
+                    { 7, "Saturday" }
                 });
 
             migrationBuilder.InsertData(
@@ -368,13 +382,13 @@ namespace HersFlowers.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
+                name: "DayOfTheWeeks");
+
+            migrationBuilder.DropTable(
                 name: "Flowers");
 
             migrationBuilder.DropTable(
                 name: "Images");
-
-            migrationBuilder.DropTable(
-                name: "MeetingDays");
 
             migrationBuilder.DropTable(
                 name: "Owners");

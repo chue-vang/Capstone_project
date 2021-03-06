@@ -6,11 +6,12 @@ using System.Threading.Tasks;
 
 namespace HersFlowers.Models
 {
-    public class MeetingDay
+    public class DayOfTheWeek
     {
         [Key]
         public int Id { get; set; }
+
         [Display(Name = "Meeting Day")]
-        public string Date { get; set; }
+        public string Day { get; set; }
     }
 }

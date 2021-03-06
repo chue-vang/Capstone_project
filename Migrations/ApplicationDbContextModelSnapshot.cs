@@ -51,6 +51,58 @@ namespace HersFlowers.Migrations
                     b.ToTable("Customers");
                 });
 
+            modelBuilder.Entity("HersFlowers.Models.DayOfTheWeek", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Day")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("DayOfTheWeeks");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Day = "Sunday"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Day = "Monday"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Day = "Tuesday"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Day = "Wednesday"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Day = "Thursday"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            Day = "Friday"
+                        },
+                        new
+                        {
+                            Id = 7,
+                            Day = "Saturday"
+                        });
+                });
+
             modelBuilder.Entity("HersFlowers.Models.Flower", b =>
                 {
                     b.Property<int>("Id")
@@ -93,21 +145,6 @@ namespace HersFlowers.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Images");
-                });
-
-            modelBuilder.Entity("HersFlowers.Models.MeetingDay", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Date")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("MeetingDays");
                 });
 
             modelBuilder.Entity("HersFlowers.Models.Owner", b =>
@@ -221,15 +258,15 @@ namespace HersFlowers.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "e1f423da-319b-4c0a-9193-5eab874a395b",
-                            ConcurrencyStamp = "1e9ddc74-94d8-4ca5-afdb-3d61743e94e3",
+                            Id = "00dcfb1b-48da-4b34-a6d8-2a4c04ebb1f2",
+                            ConcurrencyStamp = "30cb8f57-84f6-40d4-a6cb-e15e2f333319",
                             Name = "Owner",
                             NormalizedName = "OWNER"
                         },
                         new
                         {
-                            Id = "edcba12f-8948-4e59-9b2e-7094c868ceff",
-                            ConcurrencyStamp = "b88e85ee-e55f-4eae-be94-46bf2c925446",
+                            Id = "0721c6ab-c7f4-40dc-be94-e37c49e73352",
+                            ConcurrencyStamp = "ca787889-91ae-4d12-bfb8-de02531e4417",
                             Name = "Customer",
                             NormalizedName = "CUSTOMER"
                         });

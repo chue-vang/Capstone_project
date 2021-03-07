@@ -9,6 +9,8 @@ using HersFlowers.Data;
 using HersFlowers.Models;
 using System.Security.Claims;
 using Microsoft.AspNetCore.Authorization;
+using HersFlowers.EmailService;
+using MailKit.Net.Smtp;
 
 namespace HersFlowers.Controllers
 {
@@ -54,8 +56,7 @@ namespace HersFlowers.Controllers
             return View();
         }
 
-        [HttpPost]
-        [ValidateAntiForgeryToken]
+
         //public IActionResult FilterMeetingByDay(Request request)
         //{
         //    DayOfTheWeek newDayOfTheWeek = new DayOfTheWeek();
@@ -65,6 +66,43 @@ namespace HersFlowers.Controllers
         //    string today = day.ToString();
         //    var filterByDay = _context.Requests.Where(r => r.Date.ToString() == currentDayOfWeek).Include(c => 
         //    return View(filterByDay);
+        //}
+
+
+        //public IActionResult SendMonthlyEmail(int? id)
+        //{
+        //    return View();
+        //}
+
+
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public IActionResult SendMonthlyEmail(MailRequest model)
+        //{
+        //    using (var client = new SmtpClient())
+        //    {
+
+        //    }
+        //}
+
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public IActionResult SendMonthlyEmail(MailRequest mailRequest)
+        //{
+
+        //var newOwner = _context.Owners.Where(c => c.Id == userId).SingleOrDefault();
+        //        _context.Add(mailRequest);
+        //        _context.SaveChanges();
+
+        //    using (var client = new HttpClient())
+        //    {
+        //        client.BaseAddress = new Uri(Baseurl);
+        //        client.DefaultRequestHeaders.Clear();
+        //    }
+
+        //        return RedirectToAction(nameof(Index));
+
+
         //}
 
 

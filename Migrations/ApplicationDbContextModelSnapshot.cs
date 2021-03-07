@@ -19,6 +19,32 @@ namespace HersFlowers.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+            modelBuilder.Entity("HersFlowers.EmailService.MailRequest", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Body")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("OwnerId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Subject")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ToEmail")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("OwnerId");
+
+                    b.ToTable("MailRequest");
+                });
+
             modelBuilder.Entity("HersFlowers.Models.Customer", b =>
                 {
                     b.Property<int>("Id")
@@ -258,15 +284,15 @@ namespace HersFlowers.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "00dcfb1b-48da-4b34-a6d8-2a4c04ebb1f2",
-                            ConcurrencyStamp = "30cb8f57-84f6-40d4-a6cb-e15e2f333319",
+                            Id = "753d47ca-95c7-41eb-990a-5302590051a7",
+                            ConcurrencyStamp = "6f52705e-dd85-49b0-ab51-9e1a1a3b8cc0",
                             Name = "Owner",
                             NormalizedName = "OWNER"
                         },
                         new
                         {
-                            Id = "0721c6ab-c7f4-40dc-be94-e37c49e73352",
-                            ConcurrencyStamp = "ca787889-91ae-4d12-bfb8-de02531e4417",
+                            Id = "803d28db-d5dd-49ff-9f92-23fe341c20cf",
+                            ConcurrencyStamp = "6765b375-cc96-4ea4-a692-8f92dc08b726",
                             Name = "Customer",
                             NormalizedName = "CUSTOMER"
                         });
@@ -439,6 +465,13 @@ namespace HersFlowers.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens");
+                });
+
+            modelBuilder.Entity("HersFlowers.EmailService.MailRequest", b =>
+                {
+                    b.HasOne("HersFlowers.Models.Owner", "Owner")
+                        .WithMany()
+                        .HasForeignKey("OwnerId");
                 });
 
             modelBuilder.Entity("HersFlowers.Models.Customer", b =>

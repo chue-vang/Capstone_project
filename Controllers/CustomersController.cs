@@ -51,15 +51,6 @@ namespace HersFlowers.Controllers
             var newCustomer = _context.Customers.Where(c => c.Id == userId).SingleOrDefault();
             if (customer != null)
             {
-                //Request newRequest = new Request();
-
-                ////var requestInDb = _context.Requests.Single(r => r.Id == request.Id);
-                //newRequest.Customer.FirstName = request.Customer.FirstName;
-                //newRequest.Customer.LastName = request.Customer.LastName;
-                //newRequest.Date = request.Date;
-                //newRequest.Time = request.Time;
-                //newRequest.Message = request.Message;
-
                 _context.Add(request);
                 _context.SaveChanges();
                 return RedirectToAction(nameof(Index));

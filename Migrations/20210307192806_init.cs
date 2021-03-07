@@ -277,13 +277,35 @@ namespace HersFlowers.Migrations
                         onDelete: ReferentialAction.Restrict);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "MailRequest",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    ToEmail = table.Column<string>(nullable: true),
+                    Subject = table.Column<string>(nullable: true),
+                    Body = table.Column<string>(nullable: true),
+                    OwnerId = table.Column<int>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_MailRequest", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_MailRequest_Owners_OwnerId",
+                        column: x => x.OwnerId,
+                        principalTable: "Owners",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
             migrationBuilder.InsertData(
                 table: "AspNetRoles",
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
                 values: new object[,]
                 {
-                    { "00dcfb1b-48da-4b34-a6d8-2a4c04ebb1f2", "30cb8f57-84f6-40d4-a6cb-e15e2f333319", "Owner", "OWNER" },
-                    { "0721c6ab-c7f4-40dc-be94-e37c49e73352", "ca787889-91ae-4d12-bfb8-de02531e4417", "Customer", "CUSTOMER" }
+                    { "753d47ca-95c7-41eb-990a-5302590051a7", "6f52705e-dd85-49b0-ab51-9e1a1a3b8cc0", "Owner", "OWNER" },
+                    { "803d28db-d5dd-49ff-9f92-23fe341c20cf", "6765b375-cc96-4ea4-a692-8f92dc08b726", "Customer", "CUSTOMER" }
                 });
 
             migrationBuilder.InsertData(
@@ -354,6 +376,11 @@ namespace HersFlowers.Migrations
                 column: "IdentityUserId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_MailRequest_OwnerId",
+                table: "MailRequest",
+                column: "OwnerId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Owners_IdentityUserId",
                 table: "Owners",
                 column: "IdentityUserId");
@@ -391,7 +418,7 @@ namespace HersFlowers.Migrations
                 name: "Images");
 
             migrationBuilder.DropTable(
-                name: "Owners");
+                name: "MailRequest");
 
             migrationBuilder.DropTable(
                 name: "Requests");
@@ -401,6 +428,9 @@ namespace HersFlowers.Migrations
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");
+
+            migrationBuilder.DropTable(
+                name: "Owners");
 
             migrationBuilder.DropTable(
                 name: "Customers");

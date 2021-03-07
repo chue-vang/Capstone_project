@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using HersFlowers.EmailService;
 
 namespace HersFlowers.Data
 {
@@ -17,6 +18,7 @@ namespace HersFlowers.Data
         public DbSet<Request> Requests { get; set; }
         public DbSet<Image> Images { get; set; }
         public DbSet<DayOfTheWeek> DayOfTheWeeks { get; set; }
+        public DbSet<MailRequest> MailRequests { get; set; }
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
         {
@@ -125,5 +127,6 @@ namespace HersFlowers.Data
             }
             );
         }
+        public DbSet<HersFlowers.EmailService.MailRequest> MailRequest { get; set; }
     }
 }

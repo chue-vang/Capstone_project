@@ -18,13 +18,18 @@ namespace HersFlowers.Controllers
             this.mailService = mailService;
         }
 
-        [HttpPost("send")]
-        public async Task<IActionResult> SendMail([FromForm] MailRequest request)
+        public IActionResult SendMonthlyEmail(int? id)
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> SendMonthlyEmail([FromForm] MailRequest request)
         {
             try
             {
                 await mailService.SendEmailAsync(request);
-                return Ok();
+                return View("Index", "Owner");
             }
             catch (Exception ex)
             {

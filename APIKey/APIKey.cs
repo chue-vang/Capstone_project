@@ -7,7 +7,7 @@ namespace HersFlowers.APIKey
 {
     public static class APIKey
     {
-        private static string googleMapKey = "AIzaSyDO8S0ai9pF2pPShff7fAOosX_0p-2iIq8";
+        private static string googleMapKey = "";
         public static string GoogleMapKey
         {
             get => googleMapKey;

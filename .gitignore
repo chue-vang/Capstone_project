@@ -349,9 +349,5 @@ MigrationBackup/
 # Ionide (cross platform F# VS Code tools) working folder
 .ionide/
 
-<<<<<<< HEAD
-# ignore APIKey file
-=======
-# Ignore APIKey file
->>>>>>> ownerSelectlist
-APIKey.cs
+#Ignore APIKey file
+.APIKey.cs

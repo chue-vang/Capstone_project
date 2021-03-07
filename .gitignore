@@ -351,3 +351,6 @@ MigrationBackup/
 
 #Ignore APIKey file
 .APIKey.cs
+
+# APIKey folder ignore
+**/APIKey/**

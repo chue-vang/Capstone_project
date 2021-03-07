@@ -10,7 +10,6 @@ using HersFlowers.Models;
 using System.Security.Claims;
 using Microsoft.AspNetCore.Authorization;
 
-
 namespace HersFlowers.Controllers
 {
     [Authorize(Roles = "Owner")]
@@ -67,6 +66,7 @@ namespace HersFlowers.Controllers
         //    var filterByDay = _context.Requests.Where(r => r.Date.ToString() == currentDayOfWeek).Include(c => 
         //    return View(filterByDay);
         //}
+
 
         // GET: Owners/Details/5
         public IActionResult Details(int? id)

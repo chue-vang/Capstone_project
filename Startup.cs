@@ -1,5 +1,6 @@
 using HersFlowers.ActionFilters;
 using HersFlowers.Data;
+using HersFlowers.EmailService;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -44,6 +45,12 @@ namespace HersFlowers
             });
             services.AddControllersWithViews();
             services.AddRazorPages();
+
+            services.AddMvc();
+
+
+            services.Configure<MailSettings>(Configuration.GetSection("MailSettings"));
+            services.AddTransient<IMailService, EmailService.MailService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -51,6 +58,8 @@ namespace HersFlowers
         {
             if (env.IsDevelopment())
             {
+
+
                 app.UseDeveloperExceptionPage();
                 app.UseDatabaseErrorPage();
             }
@@ -75,18 +84,6 @@ namespace HersFlowers
                     pattern: "{controller=Home}/{action=Index}/{id?}");
                 endpoints.MapRazorPages();
             });
-
-            //app.UseEndpoints(endpoints =>
-            //{
-            //    endpoints.MapControllerRoute(
-            //        name: "about",
-            //        pattern: "{controller=Home}/{action=About}");
-            //    endpoints.MapRazorPages();
-
-
-            //});
-
-
         }
     }
 }

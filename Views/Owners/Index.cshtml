@@ -10,8 +10,9 @@
 
 
 <p>
-    <a asp-action="Edit" asp-route-id="@ViewBag.Id">Edit Your Profile</a>
-    <a asp-action="FilterMeetingByDay" asp-controller="Owners">Filter Meetings by Day</a>
+    <a asp-action="Edit" asp-route-id="@ViewBag.Id">Edit Your Profile</a> |
+    @*<a asp-action="FilterMeetingByDay" asp-controller="Owners">Filter Meetings by Day</a>*@
+    <a asp-action="SendMonthlyEmail"  asp-controller="Owners">Send Out Monthly Emails</a>
 </p>
 
 <table class="table">

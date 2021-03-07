@@ -137,6 +137,7 @@ namespace HersFlowers.Controllers
                 customerEdit.LastName = customer.LastName;
                 customerEdit.Email = customer.Email;
                 customerEdit.PhoneNumber = customer.PhoneNumber;
+                customerEdit.Subscribe = customer.Subscribe;
                 _context.SaveChanges();
                 return RedirectToAction(nameof(Index));
             }

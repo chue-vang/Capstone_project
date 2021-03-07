@@ -18,7 +18,7 @@ namespace HersFlowers.Controllers
             this.mailService = mailService;
         }
 
-        public IActionResult SendMonthlyEmail(int? id)
+        public IActionResult SendMonthlyEmail()
         {
             return View();
         }
@@ -29,7 +29,7 @@ namespace HersFlowers.Controllers
             try
             {
                 await mailService.SendEmailAsync(request);
-                return View("Index", "Owner");
+                return RedirectToAction("Index", "Owners");
             }
             catch (Exception ex)
             {

@@ -19,6 +19,7 @@ namespace HersFlowers.Data
         public DbSet<Image> Images { get; set; }
         public DbSet<DayOfTheWeek> DayOfTheWeeks { get; set; }
         public DbSet<MailRequest> MailRequests { get; set; }
+        
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
         {

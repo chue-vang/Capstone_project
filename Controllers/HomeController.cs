@@ -44,11 +44,15 @@ namespace HersFlowers.Controllers
         }
 
         [HttpPost]
-        public IActionResult Services()
+        public IActionResult BouquetCalculator(string LargeQuantity, string SmallQuantity)
         {
-
+            double largeBouqet = Convert.ToDouble(LargeQuantity);
+            double smallBouquet = Convert.ToDouble(SmallQuantity);
+            ViewBag.LargeTotal = largeBouqet * 15;
+            ViewBag.SmallTotal = smallBouquet * 10;
+            ViewBag.Total = ViewBag.LargeTotal + ViewBag.SmallTotal;
+            return View("Services");
         }
-
 
         public IActionResult Contact()
         {

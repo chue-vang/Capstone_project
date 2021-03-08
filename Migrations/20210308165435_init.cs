@@ -304,8 +304,8 @@ namespace HersFlowers.Migrations
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
                 values: new object[,]
                 {
-                    { "753d47ca-95c7-41eb-990a-5302590051a7", "6f52705e-dd85-49b0-ab51-9e1a1a3b8cc0", "Owner", "OWNER" },
-                    { "803d28db-d5dd-49ff-9f92-23fe341c20cf", "6765b375-cc96-4ea4-a692-8f92dc08b726", "Customer", "CUSTOMER" }
+                    { "2aae3ac4-2835-4e6c-bf98-82cc2c265c84", "91615192-b79f-4a98-87c7-36eb6030cee1", "Owner", "OWNER" },
+                    { "78231d29-91eb-48e2-9c5f-618f41918092", "16bdfa23-5a2c-44f6-aede-06278ddb8882", "Customer", "CUSTOMER" }
                 });
 
             migrationBuilder.InsertData(

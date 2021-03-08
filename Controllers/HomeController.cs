@@ -37,9 +37,16 @@ namespace HersFlowers.Controllers
         //{
         //    return View();
         //}
+
         public IActionResult Services()
         {
             return View();
+        }
+
+        [HttpPost]
+        public IActionResult Services()
+        {
+
         }
 
 

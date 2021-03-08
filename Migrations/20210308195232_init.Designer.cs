@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace HersFlowers.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20210308165435_init")]
+    [Migration("20210308195232_init")]
     partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -170,6 +170,9 @@ namespace HersFlowers.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<string>("Path")
+                        .HasColumnType("nvarchar(max)");
+
                     b.HasKey("Id");
 
                     b.ToTable("Images");
@@ -286,15 +289,15 @@ namespace HersFlowers.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "2aae3ac4-2835-4e6c-bf98-82cc2c265c84",
-                            ConcurrencyStamp = "91615192-b79f-4a98-87c7-36eb6030cee1",
+                            Id = "1dfb9d85-ff38-4690-b21f-0eca12e090de",
+                            ConcurrencyStamp = "df0d8461-d693-41a9-9e2a-074de537761b",
                             Name = "Owner",
                             NormalizedName = "OWNER"
                         },
                         new
                         {
-                            Id = "78231d29-91eb-48e2-9c5f-618f41918092",
-                            ConcurrencyStamp = "16bdfa23-5a2c-44f6-aede-06278ddb8882",
+                            Id = "aff460a3-ed60-4f17-a12c-82efb5b4c41a",
+                            ConcurrencyStamp = "2abf1d8a-2cac-4493-a679-aef346e57a71",
                             Name = "Customer",
                             NormalizedName = "CUSTOMER"
                         });

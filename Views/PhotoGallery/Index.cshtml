@@ -1,4 +1,41 @@
-﻿@model Image
+﻿@model ImageViewModel
 @{
+    ViewData["Title"] = "Index";
 }
 
+<div class="col-12">
+    <div class="card card-primary">
+        <div class="card-header">
+            <div class="card-title">
+                Gallery Photo's
+            </div>
+        </div>
+        <div class="card-body">
+
+            <form id="frmPhototGraphy" class="form-horizontal" asp-action="AddPhotos" asp-controller="gallery" method="post" enctype="multipart/form-data">
+                <div class="col-md-6 col-sm-6">
+
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">Photo</label>
+
+                        <div class="col-sm-6 custom-file">
+
+                            <input asp-for="@Model.image.filePhoto" type="file" class="custom-file-input" multiple="multiple">
+                            <label class="custom-file-label" for="@Model.image.filePhoto">Choose file</label>
+                            <span asp-validation-for="@Model.image.filePhoto" class="text-danger"></span>
+
+                        </div>
+                        <div class="col-sm-4"> <button type="submit" class="btn btn-danger">Upload All</button></div>
+                    </div>
+
+
+
+                </div>
+            </form>
+            <br />
+            <div class="row">
+        </div>
+    </div>
+</div>
+
+}  

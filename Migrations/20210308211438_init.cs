@@ -79,7 +79,10 @@ namespace HersFlowers.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Path = table.Column<string>(nullable: true)
+                    Path = table.Column<string>(maxLength: 255, nullable: true),
+                    Title = table.Column<string>(maxLength: 100, nullable: true),
+                    Name = table.Column<string>(maxLength: 100, nullable: true),
+                    NoOfViews = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -305,8 +308,8 @@ namespace HersFlowers.Migrations
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
                 values: new object[,]
                 {
-                    { "1dfb9d85-ff38-4690-b21f-0eca12e090de", "df0d8461-d693-41a9-9e2a-074de537761b", "Owner", "OWNER" },
-                    { "aff460a3-ed60-4f17-a12c-82efb5b4c41a", "2abf1d8a-2cac-4493-a679-aef346e57a71", "Customer", "CUSTOMER" }
+                    { "ee544463-d6f4-409e-859b-5c7d19ab7af6", "c05c8f2d-5bf0-44fb-8f0d-85bd4a16ae83", "Owner", "OWNER" },
+                    { "225fab17-9a97-457c-ad1d-9e71747e3d17", "397601b0-48e1-4d57-b83b-a976e26087c5", "Customer", "CUSTOMER" }
                 });
 
             migrationBuilder.InsertData(

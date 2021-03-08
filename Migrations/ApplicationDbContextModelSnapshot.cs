@@ -168,8 +168,20 @@ namespace HersFlowers.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(100)")
+                        .HasMaxLength(100);
+
+                    b.Property<int?>("NoOfViews")
+                        .HasColumnType("int");
+
                     b.Property<string>("Path")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(255)")
+                        .HasMaxLength(255);
+
+                    b.Property<string>("Title")
+                        .HasColumnType("nvarchar(100)")
+                        .HasMaxLength(100);
 
                     b.HasKey("Id");
 
@@ -287,15 +299,15 @@ namespace HersFlowers.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "1dfb9d85-ff38-4690-b21f-0eca12e090de",
-                            ConcurrencyStamp = "df0d8461-d693-41a9-9e2a-074de537761b",
+                            Id = "ee544463-d6f4-409e-859b-5c7d19ab7af6",
+                            ConcurrencyStamp = "c05c8f2d-5bf0-44fb-8f0d-85bd4a16ae83",
                             Name = "Owner",
                             NormalizedName = "OWNER"
                         },
                         new
                         {
-                            Id = "aff460a3-ed60-4f17-a12c-82efb5b4c41a",
-                            ConcurrencyStamp = "2abf1d8a-2cac-4493-a679-aef346e57a71",
+                            Id = "225fab17-9a97-457c-ad1d-9e71747e3d17",
+                            ConcurrencyStamp = "397601b0-48e1-4d57-b83b-a976e26087c5",
                             Name = "Customer",
                             NormalizedName = "CUSTOMER"
                         });

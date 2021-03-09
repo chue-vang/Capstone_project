@@ -90,21 +90,6 @@ namespace HersFlowers.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "ShoppingCarItems",
-                columns: table => new
-                {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Quantity = table.Column<int>(nullable: false),
-                    CustomerId = table.Column<int>(nullable: false),
-                    FlowerId = table.Column<int>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_ShoppingCarItems", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "AspNetRoleClaims",
                 columns: table => new
                 {
@@ -257,6 +242,27 @@ namespace HersFlowers.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "ShoppingCarItems",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Quantity = table.Column<int>(nullable: false),
+                    CustomerId = table.Column<int>(nullable: false),
+                    FlowerId = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ShoppingCarItems", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_ShoppingCarItems_Flowers_FlowerId",
+                        column: x => x.FlowerId,
+                        principalTable: "Flowers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Requests",
                 columns: table => new
                 {
@@ -308,8 +314,8 @@ namespace HersFlowers.Migrations
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
                 values: new object[,]
                 {
-                    { "ee544463-d6f4-409e-859b-5c7d19ab7af6", "c05c8f2d-5bf0-44fb-8f0d-85bd4a16ae83", "Owner", "OWNER" },
-                    { "225fab17-9a97-457c-ad1d-9e71747e3d17", "397601b0-48e1-4d57-b83b-a976e26087c5", "Customer", "CUSTOMER" }
+                    { "a138feba-d941-4c67-b47a-8955d47f88a2", "8f6ddd84-41cf-4bca-a4b5-22d8e55a09c9", "Owner", "OWNER" },
+                    { "e9c3e43c-72bf-4936-92c6-a2808e21ffdd", "781e5921-d933-4e3f-a192-6314706d4eaa", "Customer", "CUSTOMER" }
                 });
 
             migrationBuilder.InsertData(
@@ -393,6 +399,11 @@ namespace HersFlowers.Migrations
                 name: "IX_Requests_CustomerId",
                 table: "Requests",
                 column: "CustomerId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ShoppingCarItems_FlowerId",
+                table: "ShoppingCarItems",
+                column: "FlowerId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -416,9 +427,6 @@ namespace HersFlowers.Migrations
                 name: "DayOfTheWeeks");
 
             migrationBuilder.DropTable(
-                name: "Flowers");
-
-            migrationBuilder.DropTable(
                 name: "Images");
 
             migrationBuilder.DropTable(
@@ -438,6 +446,9 @@ namespace HersFlowers.Migrations
 
             migrationBuilder.DropTable(
                 name: "Customers");
+
+            migrationBuilder.DropTable(
+                name: "Flowers");
 
             migrationBuilder.DropTable(
                 name: "AspNetUsers");

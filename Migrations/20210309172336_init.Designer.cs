@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace HersFlowers.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20210308211438_init")]
+    [Migration("20210309172336_init")]
     partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -269,6 +269,8 @@ namespace HersFlowers.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("FlowerId");
+
                     b.ToTable("ShoppingCarItems");
                 });
 
@@ -301,15 +303,15 @@ namespace HersFlowers.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "ee544463-d6f4-409e-859b-5c7d19ab7af6",
-                            ConcurrencyStamp = "c05c8f2d-5bf0-44fb-8f0d-85bd4a16ae83",
+                            Id = "a138feba-d941-4c67-b47a-8955d47f88a2",
+                            ConcurrencyStamp = "8f6ddd84-41cf-4bca-a4b5-22d8e55a09c9",
                             Name = "Owner",
                             NormalizedName = "OWNER"
                         },
                         new
                         {
-                            Id = "225fab17-9a97-457c-ad1d-9e71747e3d17",
-                            ConcurrencyStamp = "397601b0-48e1-4d57-b83b-a976e26087c5",
+                            Id = "e9c3e43c-72bf-4936-92c6-a2808e21ffdd",
+                            ConcurrencyStamp = "781e5921-d933-4e3f-a192-6314706d4eaa",
                             Name = "Customer",
                             NormalizedName = "CUSTOMER"
                         });
@@ -510,6 +512,15 @@ namespace HersFlowers.Migrations
                     b.HasOne("HersFlowers.Models.Customer", "Customer")
                         .WithMany()
                         .HasForeignKey("CustomerId");
+                });
+
+            modelBuilder.Entity("HersFlowers.Models.ShoppingCartItem", b =>
+                {
+                    b.HasOne("HersFlowers.Models.Flower", "flower")
+                        .WithMany()
+                        .HasForeignKey("FlowerId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

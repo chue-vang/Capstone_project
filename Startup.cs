@@ -51,6 +51,14 @@ namespace HersFlowers
 
             services.Configure<MailSettings>(Configuration.GetSection("MailSettings"));
             services.AddTransient<IMailService, EmailService.MailService>();
+
+            services.AddDistributedMemoryCache();
+            services.AddSession(option =>
+            {
+                option.IdleTimeout = TimeSpan.FromSeconds(10);
+                option.Cookie.HttpOnly = true;
+                option.Cookie.IsEssential = true;
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -76,6 +84,8 @@ namespace HersFlowers
 
             app.UseAuthentication();
             app.UseAuthorization();
+
+            app.UseSession();
 
             app.UseEndpoints(endpoints =>
             {

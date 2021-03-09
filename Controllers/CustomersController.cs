@@ -38,6 +38,41 @@ namespace HersFlowers.Controllers
             }
         }
 
+        public IActionResult Products()
+        {
+            //var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
+            //var customer = _context.Customers.Where(c => c.IdentityUserId == userId).SingleOrDefault();
+            var flowerProducts = _context.Flowers.ToList();
+
+            return View(flowerProducts);
+        }
+
+        [HttpPost]
+        public IActionResult AddFlower(ShoppingCartItem shoppingCartItem, Flower flower)
+        {
+            try
+            {
+                var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
+                var customer = _context.Customers.Where(c => c.IdentityUserId == userId).SingleOrDefault();
+                shoppingCartItem.CustomerId = customer.Id;
+                _context.Add(shoppingCartItem);
+                _context.SaveChanges();
+                return RedirectToAction(nameof(Index));
+            }
+            catch
+            {
+                return View("ShoppingCart");
+            }
+        }
+
+        public IActionResult ShoppingCart()
+        {
+            var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var customer = _context.Customers.Where(c => c.IdentityUserId == userId).SingleOrDefault();
+            var cart = _context.ShoppingCarItems.Where(c => c.Id == customer.Id).SingleOrDefault();
+            return View();
+        }
+
         public IActionResult RequestMeeting(int? id)
         {            
             return View();

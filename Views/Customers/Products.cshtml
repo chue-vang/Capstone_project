@@ -7,10 +7,10 @@
 
 <h1>Products</h1>
 
-<p>
+@*<p>
     <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
+</p>*@
+<table class="table" >
     <thead>
         <tr>
             <th>
@@ -32,9 +32,8 @@
                 @Html.DisplayFor(modelItem => item.Price)
             </td>
             <td>
-                <a asp-action="AddFlower" asp-route-id="">Add</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                
+                <a asp-action="AddToCart" asp-route-id="@item.Id ">Add to Cart</a> |
+                <a asp-action="RemoveFromCart" asp-route-id="@item.Id">Remove from Cart</a>
             </td>
         </tr>
 }

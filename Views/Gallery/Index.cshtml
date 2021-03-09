@@ -1,0 +1,54 @@
+﻿@model ImageViewModel
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="col-12">
+    <div class="card">
+        <div class="card-header">
+            <div class="card-title">Photo Gallery</div>
+        </div>
+        <div class="card-body">
+            <form class="form-horizontal" asp-action="AddPhotos" asp-controller="Gallery" method="post" enctype="multipart/form-data">
+                <div class="col-md-6 col-sm-6">
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">Upload Photo</label>
+                        <div class="col-sm-6 custom-file">
+                            <input asp-for="@Model.image.filePhoto" type="file" class="custom-file-input" multiple="multiple">
+                            <label class="custom-file-label" for="@Model.image.filePhoto">Choose file</label>
+                            <span asp-validation-for="@Model.image.filePhoto" class="text-danger"></span>
+                        </div>
+                        <div class="col-sm-4"> <button type="submit" class="btn btn-primary">Upload All</button></div>
+                    </div>
+                </div>
+            </form>
+            <br />
+            <div class="row">
+                @if (Model.imageList != null)
+                {
+                    foreach (var item in Model.imageList)
+                    {
+                        <div class="col-sm-2">
+                            <a href="@Url.Content("~/photos/"+item.Name)" data-toggle="lightbox" data-title="" data-gallery="gallery">
+                                <img src="~/photos/@item.Name" asp-append-version="true" class="img-fluid mb-2" alt="">
+                            </a>
+                            @*<a href="@Url.Action("DeletePhoto","gallery",new { id=item.Id})" style="float:right">Delete</a>*@
+                        </div>
+                    }
+                }
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts{
+    <script>
+        $(function () {
+            $(document).on('click', '[data-toggle="lightbox"]', function (event) {
+                event.preventDefault();
+                $(this).ekkoLightbox({
+                    alwaysShowClose: true
+                });
+            });
+        });
+    </script>
+}  

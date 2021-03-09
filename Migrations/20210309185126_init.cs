@@ -242,7 +242,7 @@ namespace HersFlowers.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "ShoppingCarItems",
+                name: "ShoppingCartItems",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
@@ -253,9 +253,9 @@ namespace HersFlowers.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ShoppingCarItems", x => x.Id);
+                    table.PrimaryKey("PK_ShoppingCartItems", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_ShoppingCarItems_Flowers_FlowerId",
+                        name: "FK_ShoppingCartItems_Flowers_FlowerId",
                         column: x => x.FlowerId,
                         principalTable: "Flowers",
                         principalColumn: "Id",
@@ -314,8 +314,8 @@ namespace HersFlowers.Migrations
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
                 values: new object[,]
                 {
-                    { "a138feba-d941-4c67-b47a-8955d47f88a2", "8f6ddd84-41cf-4bca-a4b5-22d8e55a09c9", "Owner", "OWNER" },
-                    { "e9c3e43c-72bf-4936-92c6-a2808e21ffdd", "781e5921-d933-4e3f-a192-6314706d4eaa", "Customer", "CUSTOMER" }
+                    { "0bcce021-24b9-4c4d-9351-a60882997430", "c2ce81e1-5206-4329-95af-e092827252f7", "Owner", "OWNER" },
+                    { "6d2d3929-44aa-404f-a017-451739a74637", "9d1214d4-9e61-46bc-a32f-e5d4f624742b", "Customer", "CUSTOMER" }
                 });
 
             migrationBuilder.InsertData(
@@ -401,8 +401,8 @@ namespace HersFlowers.Migrations
                 column: "CustomerId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_ShoppingCarItems_FlowerId",
-                table: "ShoppingCarItems",
+                name: "IX_ShoppingCartItems_FlowerId",
+                table: "ShoppingCartItems",
                 column: "FlowerId");
         }
 
@@ -436,7 +436,7 @@ namespace HersFlowers.Migrations
                 name: "Requests");
 
             migrationBuilder.DropTable(
-                name: "ShoppingCarItems");
+                name: "ShoppingCartItems");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");

@@ -269,7 +269,7 @@ namespace HersFlowers.Migrations
 
                     b.HasIndex("FlowerId");
 
-                    b.ToTable("ShoppingCarItems");
+                    b.ToTable("ShoppingCartItems");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -301,15 +301,15 @@ namespace HersFlowers.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "a138feba-d941-4c67-b47a-8955d47f88a2",
-                            ConcurrencyStamp = "8f6ddd84-41cf-4bca-a4b5-22d8e55a09c9",
+                            Id = "0bcce021-24b9-4c4d-9351-a60882997430",
+                            ConcurrencyStamp = "c2ce81e1-5206-4329-95af-e092827252f7",
                             Name = "Owner",
                             NormalizedName = "OWNER"
                         },
                         new
                         {
-                            Id = "e9c3e43c-72bf-4936-92c6-a2808e21ffdd",
-                            ConcurrencyStamp = "781e5921-d933-4e3f-a192-6314706d4eaa",
+                            Id = "6d2d3929-44aa-404f-a017-451739a74637",
+                            ConcurrencyStamp = "9d1214d4-9e61-46bc-a32f-e5d4f624742b",
                             Name = "Customer",
                             NormalizedName = "CUSTOMER"
                         });

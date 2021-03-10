@@ -66,7 +66,7 @@ namespace HersFlowers.Migrations
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(nullable: true),
-                    Price = table.Column<int>(nullable: true)
+                    Price = table.Column<double>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -314,8 +314,8 @@ namespace HersFlowers.Migrations
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
                 values: new object[,]
                 {
-                    { "0bcce021-24b9-4c4d-9351-a60882997430", "c2ce81e1-5206-4329-95af-e092827252f7", "Owner", "OWNER" },
-                    { "6d2d3929-44aa-404f-a017-451739a74637", "9d1214d4-9e61-46bc-a32f-e5d4f624742b", "Customer", "CUSTOMER" }
+                    { "bd112a63-3b1b-4e7f-a5c4-8a2a0eebe3da", "a248f0b5-d2fe-4334-be25-f6facf97e398", "Owner", "OWNER" },
+                    { "8da1fc84-0547-44c7-bbcc-c7597c502200", "e7b8d468-7315-4c85-8fad-b5b6f22f4ee0", "Customer", "CUSTOMER" }
                 });
 
             migrationBuilder.InsertData(
@@ -335,11 +335,7 @@ namespace HersFlowers.Migrations
             migrationBuilder.InsertData(
                 table: "Flowers",
                 columns: new[] { "Id", "Name", "Price" },
-                values: new object[,]
-                {
-                    { 1, "large boquet", 15 },
-                    { 2, "small boquet", 10 }
-                });
+                values: new object[] { 1, "Boquet", 15.0 });
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",

@@ -139,8 +139,8 @@ namespace HersFlowers.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("Price")
-                        .HasColumnType("int");
+                    b.Property<double?>("Price")
+                        .HasColumnType("float");
 
                     b.HasKey("Id");
 
@@ -150,14 +150,8 @@ namespace HersFlowers.Migrations
                         new
                         {
                             Id = 1,
-                            Name = "large boquet",
-                            Price = 15
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Name = "small boquet",
-                            Price = 10
+                            Name = "Boquet",
+                            Price = 15.0
                         });
                 });
 
@@ -301,15 +295,15 @@ namespace HersFlowers.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "0bcce021-24b9-4c4d-9351-a60882997430",
-                            ConcurrencyStamp = "c2ce81e1-5206-4329-95af-e092827252f7",
+                            Id = "bd112a63-3b1b-4e7f-a5c4-8a2a0eebe3da",
+                            ConcurrencyStamp = "a248f0b5-d2fe-4334-be25-f6facf97e398",
                             Name = "Owner",
                             NormalizedName = "OWNER"
                         },
                         new
                         {
-                            Id = "6d2d3929-44aa-404f-a017-451739a74637",
-                            ConcurrencyStamp = "9d1214d4-9e61-46bc-a32f-e5d4f624742b",
+                            Id = "8da1fc84-0547-44c7-bbcc-c7597c502200",
+                            ConcurrencyStamp = "e7b8d468-7315-4c85-8fad-b5b6f22f4ee0",
                             Name = "Customer",
                             NormalizedName = "CUSTOMER"
                         });

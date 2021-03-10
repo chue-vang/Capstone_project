@@ -70,18 +70,9 @@ namespace HersFlowers.Data
              new Flower
              {
                  Id = 1,
-                 Name = "large boquet",
+                 Name = "Boquet",
                  Price = 15,
              });
-
-            builder.Entity<Flower>()
-            .HasData(
-            new Flower
-            {
-                Id = 2,
-                Name = "small boquet",
-                Price = 10,
-            });
 
             builder.Entity<DayOfTheWeek>()
             .HasData(

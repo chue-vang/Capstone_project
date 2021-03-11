@@ -12,6 +12,7 @@ namespace HersFlowers.Models
         [Key]
         public int Id { get; set; }
         public int Quantity { get; set; }
+        public int Total { get; set; }
 
         [ForeignKey("Customer")]
         public int CustomerId { get; set; }

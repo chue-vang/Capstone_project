@@ -248,6 +248,7 @@ namespace HersFlowers.Migrations
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Quantity = table.Column<int>(nullable: false),
+                    Total = table.Column<int>(nullable: false),
                     CustomerId = table.Column<int>(nullable: false),
                     FlowerId = table.Column<int>(nullable: false)
                 },
@@ -314,8 +315,8 @@ namespace HersFlowers.Migrations
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
                 values: new object[,]
                 {
-                    { "bd112a63-3b1b-4e7f-a5c4-8a2a0eebe3da", "a248f0b5-d2fe-4334-be25-f6facf97e398", "Owner", "OWNER" },
-                    { "8da1fc84-0547-44c7-bbcc-c7597c502200", "e7b8d468-7315-4c85-8fad-b5b6f22f4ee0", "Customer", "CUSTOMER" }
+                    { "bf34a04b-cbe0-40e6-a06f-b1cd80e1f884", "c3610369-ea89-4f6f-93f4-f52d4e659cbc", "Owner", "OWNER" },
+                    { "38db01fc-03ed-4c90-9906-c709289e9e8d", "e156cd8c-2a12-4526-83bc-62d9d32ec351", "Customer", "CUSTOMER" }
                 });
 
             migrationBuilder.InsertData(

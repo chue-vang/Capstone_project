@@ -259,6 +259,9 @@ namespace HersFlowers.Migrations
                     b.Property<int>("Quantity")
                         .HasColumnType("int");
 
+                    b.Property<int>("Total")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
 
                     b.HasIndex("FlowerId");
@@ -295,15 +298,15 @@ namespace HersFlowers.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "bd112a63-3b1b-4e7f-a5c4-8a2a0eebe3da",
-                            ConcurrencyStamp = "a248f0b5-d2fe-4334-be25-f6facf97e398",
+                            Id = "bf34a04b-cbe0-40e6-a06f-b1cd80e1f884",
+                            ConcurrencyStamp = "c3610369-ea89-4f6f-93f4-f52d4e659cbc",
                             Name = "Owner",
                             NormalizedName = "OWNER"
                         },
                         new
                         {
-                            Id = "8da1fc84-0547-44c7-bbcc-c7597c502200",
-                            ConcurrencyStamp = "e7b8d468-7315-4c85-8fad-b5b6f22f4ee0",
+                            Id = "38db01fc-03ed-4c90-9906-c709289e9e8d",
+                            ConcurrencyStamp = "e156cd8c-2a12-4526-83bc-62d9d32ec351",
                             Name = "Customer",
                             NormalizedName = "CUSTOMER"
                         });

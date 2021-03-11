@@ -57,27 +57,49 @@ namespace HersFlowers.Controllers
             return View();
         }
 
-        [HttpPost]
-        public IActionResult AddToCart(Flower flower, int? id)
-        {            
-            var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
-            var customer = _context.Customers.Where(c => c.IdentityUserId == userId).SingleOrDefault();
-            ShoppingCartItem shoppingCartItem = new ShoppingCartItem();
-            //shoppingCartItem.Quantity = 
-            shoppingCartItem.CustomerId = customer.Id;
-            shoppingCartItem.FlowerId = flower.Id;
-            _context.Add(shoppingCartItem);
-            _context.SaveChanges();
+        //[HttpPost]
+        //public IActionResult AddToCart(Flower flower, int? id)
+        //{
+        //    var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
+        //    var customer = _context.Customers.Where(c => c.IdentityUserId == userId).SingleOrDefault();
+        //    ShoppingCartItem shoppingCartItem = new ShoppingCartItem();
+        //    shoppingCartItem.flower.Price * shoppingCartItem.Quantity;
+        //    shoppingCartItem.CustomerId = customer.Id;
+        //    shoppingCartItem.FlowerId = flower.Id;
+        //    _context.Add(shoppingCartItem);
+        //    _context.SaveChanges();
 
-            return RedirectToAction("ShoppingCart");
-        }
+        //    return RedirectToAction("ShoppingCart");
+        //}
+
+        //public IActionResult AddAnotherItem(Flower flower, int? id)
+        //{
+        //    var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
+        //    var customer = _context.Customers.Where(c => c.IdentityUserId == userId).SingleOrDefault();
+        //    ShoppingCartItem shoppingCartItem = new ShoppingCartItem();
+        //    shoppingCartItem.Quantity += shoppingCartItem.Quantity;
+        //    _context.Add(shoppingCartItem);
+        //    _context.SaveChanges();
+        //    return View();
+        //}
 
         public IActionResult ShoppingCart()
         {
+            //ShoppingCartItem shoppingCartItem = new ShoppingCartItem();
             var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
             var customer = _context.Customers.Where(c => c.IdentityUserId == userId).SingleOrDefault();
-            var cart = _context.ShoppingCartItems.Where(c => c.Id == customer.Id ).SingleOrDefault();
-            return View(cart);
+            var cart = _context.ShoppingCartItems.Where(s => s.Id == customer.Id).ToList();
+
+            List<ShoppingCartItem> shoppingCart = new List<ShoppingCartItem>();
+           
+
+            foreach ( var item in cart)
+                if (item.CustomerId == customer.Id)
+                {
+                    shoppingCart.Add(item);
+                }
+
+            return View(shoppingCart);
         }
 
         public IActionResult RequestMeeting(int? id)

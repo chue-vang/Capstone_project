@@ -35,12 +35,13 @@
                     @Html.DisplayFor(modelItem => item.Price)
                 </td>
                 @*<td>
-                    <input asp-for="" type="text" />
-                </td>*@
+            <input asp-for="" type="text" />
+        </td>*@
                 <td>
-                    <a asp-action="AddToCart" asp-route-id="@item.Id ">Add to Cart</a> |
-                    <a asp-action="RemoveFromCart" asp-route-id="@item.Id">Remove from Cart</a>
+                    <a asp-action="AddToCart" asp-route-id="@item.Id">Add to Cart</a> 
+                    @*<a asp-action="RemoveFromCart" asp-route-id="@item.Id">Remove from Cart</a>*@
                 </td>
+                
             </tr>
     }
         </tbody>

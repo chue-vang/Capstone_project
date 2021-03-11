@@ -1,4 +1,4 @@
-﻿@model HersFlowers.Models.ViewModels.ShoppingCartFlowerViewModel
+﻿@model IEnumerable<HersFlowers.Models.ShoppingCartItem>
 
 @{
     ViewData["Title"] = "ShoppingCart";
@@ -14,34 +14,32 @@
     <thead>
         <tr>
             <th>
-                Name of Product
+                @Html.DisplayNameFor(model => model.Quantity)
             </th>
-
             <th>
                 Price
             </th>
             <th>
-                Quantity
+                @Html.DisplayNameFor(model => model.flower.Price)
             </th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model.Flowers) {
+@foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.Name)
+                @Html.DisplayFor(modelItem => item.flower.Price)
+            </td>
+            <td>
+                
+            </td>
+            <td>
+                
             </td>
 
             <td>
-                @Html.DisplayFor(modelItem => item.Price)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                <a asp-action="AddAnotherItem" asp-route-id="@item.Id">Add another item</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Remove an item</a>
             </td>
         </tr>
 }

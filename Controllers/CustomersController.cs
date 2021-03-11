@@ -40,7 +40,7 @@ namespace HersFlowers.Controllers
         }
 
         //GET Products
-        public IActionResult TESTProduct(int? id)
+        public IActionResult Product(int? id)
         {
             ShoppingCartFlowerViewModel shoppingCartFlower = new ShoppingCartFlowerViewModel();
             var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
@@ -91,6 +91,27 @@ namespace HersFlowers.Controllers
             //    }
 
             return View(cart);
+        }
+
+        //GET UpdateCart
+        public IActionResult UpdateCart(Flower flower, int? id)
+        {
+            return View();
+        }
+
+
+        [HttpPost]
+        public IActionResult UpdateCart(ShoppingCartItem shoppingCartItem, Flower flower, int? id)
+        {
+            var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var customer = _context.Customers.Where(c => c.IdentityUserId == userId).SingleOrDefault();
+            shoppingCartItem.Total = 15 * shoppingCartItem.Quantity;
+            shoppingCartItem.CustomerId = customer.Id;
+            shoppingCartItem.FlowerId = flower.Id;
+            _context.ShoppingCartItems.Update(shoppingCartItem);
+            _context.SaveChanges();
+
+            return RedirectToAction("ShoppingCart");
         }
 
         public IActionResult RequestMeeting(int? id)

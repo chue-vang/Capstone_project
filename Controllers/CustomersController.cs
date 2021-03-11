@@ -9,6 +9,7 @@ using HersFlowers.Data;
 using HersFlowers.Models;
 using System.Security.Claims;
 using Microsoft.AspNetCore.Authorization;
+using HersFlowers.Models.ViewModels;
 
 namespace HersFlowers.Controllers
 {
@@ -38,50 +39,40 @@ namespace HersFlowers.Controllers
             }
         }
 
-        public IActionResult Products(int? id)
+        //GET Products
+        public IActionResult TESTProduct(int? id)
         {
-            //double LargeBouquet = Convert.ToDouble(largeQuantity);
-            //double SmallBouquet = Convert.ToDouble(smallQuantity);
-            //ViewBag.LargeTotal = LargeBouquet * 15;
-            //ViewBag.SmallTotal = SmallBouquet * 10;
-
-
+            ShoppingCartFlowerViewModel shoppingCartFlower = new ShoppingCartFlowerViewModel();
             var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
             var customer = _context.Customers.Where(c => c.IdentityUserId == userId).SingleOrDefault();
-            var flowerProducts = _context.Flowers;
-            return View(flowerProducts);
+            var flowerProducts = _context.Flowers.ToList();
+            shoppingCartFlower.Flowers = flowerProducts;
+            
+            return View(shoppingCartFlower);
         }
 
-        public IActionResult AddToCart(int? id)
+        public IActionResult AddToCart(Flower flower, int? id)
         {
             return View();
         }
 
-        //[HttpPost]
-        //public IActionResult AddToCart(Flower flower, int? id)
-        //{
-        //    var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
-        //    var customer = _context.Customers.Where(c => c.IdentityUserId == userId).SingleOrDefault();
-        //    ShoppingCartItem shoppingCartItem = new ShoppingCartItem();
-        //    shoppingCartItem.flower.Price * shoppingCartItem.Quantity;
-        //    shoppingCartItem.CustomerId = customer.Id;
-        //    shoppingCartItem.FlowerId = flower.Id;
-        //    _context.Add(shoppingCartItem);
-        //    _context.SaveChanges();
+        [HttpPost]
+        public IActionResult AddToCart(ShoppingCartItem shoppingCartItem,  Flower flower, int? id)
+        {
+            var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var customer = _context.Customers.Where(c => c.IdentityUserId == userId).SingleOrDefault();
+            //ShoppingCartItem newShoppingCartItem = new ShoppingCartItem();
+            shoppingCartItem.Total = 15 * shoppingCartItem.Quantity;
+            shoppingCartItem.CustomerId = customer.Id;
+            shoppingCartItem.FlowerId = flower.Id;
 
-        //    return RedirectToAction("ShoppingCart");
-        //}
+            _context.ShoppingCartItems.Update(shoppingCartItem);
+            _context.SaveChanges();
 
-        //public IActionResult AddAnotherItem(Flower flower, int? id)
-        //{
-        //    var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
-        //    var customer = _context.Customers.Where(c => c.IdentityUserId == userId).SingleOrDefault();
-        //    ShoppingCartItem shoppingCartItem = new ShoppingCartItem();
-        //    shoppingCartItem.Quantity += shoppingCartItem.Quantity;
-        //    _context.Add(shoppingCartItem);
-        //    _context.SaveChanges();
-        //    return View();
-        //}
+            return RedirectToAction("ShoppingCart");
+        }
+
+
 
         public IActionResult ShoppingCart()
         {
@@ -90,16 +81,16 @@ namespace HersFlowers.Controllers
             var customer = _context.Customers.Where(c => c.IdentityUserId == userId).SingleOrDefault();
             var cart = _context.ShoppingCartItems.Where(s => s.Id == customer.Id).ToList();
 
-            List<ShoppingCartItem> shoppingCart = new List<ShoppingCartItem>();
+            //List<ShoppingCartItem> shoppingCart = new List<ShoppingCartItem>();
            
 
-            foreach ( var item in cart)
-                if (item.CustomerId == customer.Id)
-                {
-                    shoppingCart.Add(item);
-                }
+            //foreach ( var item in cart)
+            //    if (item.CustomerId == customer.Id)
+            //    {
+            //        shoppingCart.Add(item);
+            //    }
 
-            return View(shoppingCart);
+            return View(cart);
         }
 
         public IActionResult RequestMeeting(int? id)

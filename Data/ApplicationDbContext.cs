@@ -70,7 +70,7 @@ namespace HersFlowers.Data
              new Flower
              {
                  Id = 1,
-                 Name = "Boquet",
+                 Name = "Bouquet",
                  Price = 15,
              });
 

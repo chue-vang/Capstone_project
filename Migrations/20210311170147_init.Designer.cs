@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace HersFlowers.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20210311152519_init")]
+    [Migration("20210311170147_init")]
     partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -141,8 +141,8 @@ namespace HersFlowers.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<double?>("Price")
-                        .HasColumnType("float");
+                    b.Property<int>("Price")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
@@ -152,8 +152,8 @@ namespace HersFlowers.Migrations
                         new
                         {
                             Id = 1,
-                            Name = "Boquet",
-                            Price = 15.0
+                            Name = "Bouquet",
+                            Price = 15
                         });
                 });
 
@@ -266,8 +266,6 @@ namespace HersFlowers.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("FlowerId");
-
                     b.ToTable("ShoppingCartItems");
                 });
 
@@ -300,15 +298,15 @@ namespace HersFlowers.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "bf34a04b-cbe0-40e6-a06f-b1cd80e1f884",
-                            ConcurrencyStamp = "c3610369-ea89-4f6f-93f4-f52d4e659cbc",
+                            Id = "0a20e69b-7e26-4bbb-8fb6-66c2952b083f",
+                            ConcurrencyStamp = "9f0d9458-94fe-4798-8cee-d56087ff8968",
                             Name = "Owner",
                             NormalizedName = "OWNER"
                         },
                         new
                         {
-                            Id = "38db01fc-03ed-4c90-9906-c709289e9e8d",
-                            ConcurrencyStamp = "e156cd8c-2a12-4526-83bc-62d9d32ec351",
+                            Id = "265adaf8-3cae-4efd-9eaf-f7460f7c00c5",
+                            ConcurrencyStamp = "cfa38932-c9c7-4e08-b8a4-d192802d9354",
                             Name = "Customer",
                             NormalizedName = "CUSTOMER"
                         });
@@ -509,15 +507,6 @@ namespace HersFlowers.Migrations
                     b.HasOne("HersFlowers.Models.Customer", "Customer")
                         .WithMany()
                         .HasForeignKey("CustomerId");
-                });
-
-            modelBuilder.Entity("HersFlowers.Models.ShoppingCartItem", b =>
-                {
-                    b.HasOne("HersFlowers.Models.Flower", "flower")
-                        .WithMany()
-                        .HasForeignKey("FlowerId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

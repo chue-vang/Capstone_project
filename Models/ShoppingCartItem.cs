@@ -20,6 +20,5 @@ namespace HersFlowers.Models
         [ForeignKey("Flower")]
         public int FlowerId { get; set; }
 
-        public Flower flower { get; set; }
     }
 }

@@ -14,24 +14,22 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Quantity)
+                @Html.DisplayNameFor(model => model.Quantity) of Bouquets
             </th>
             <th>
-                Price
+                @Html.DisplayNameFor(model => model.Total)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.flower.Price)
-            </th>
+
         </tr>
     </thead>
     <tbody>
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.flower.Price)
+                @Html.DisplayFor(modelItem => item.Quantity)
             </td>
             <td>
-                
+               $@Html.DisplayFor(modelItem => item.Total)
             </td>
             <td>
                 

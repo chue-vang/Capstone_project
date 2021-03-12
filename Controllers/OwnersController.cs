@@ -56,55 +56,11 @@ namespace HersFlowers.Controllers
             return View();
         }
 
-
-        //public IActionResult FilterMeetingByDay(Request request)
-        //{
-        //    DayOfTheWeek newDayOfTheWeek = new DayOfTheWeek();
-
-        //    string currentDayOfWeek = DateTime.Today.DayOfWeek.ToString();
-        //    var day = new SelectList(_context.DayOfTheWeeks.ToList(), "Id", "Day");
-        //    string today = day.ToString();
-        //    var filterByDay = _context.Requests.Where(r => r.Date.ToString() == currentDayOfWeek).Include(c => 
-        //    return View(filterByDay);
-        //}
-
-
-        //public IActionResult SendMonthlyEmail(int? id)
-        //{
-        //    return View();
-        //}
-
-
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public IActionResult SendMonthlyEmail(MailRequest model)
-        //{
-        //    using (var client = new SmtpClient())
-        //    {
-
-        //    }
-        //}
-
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public IActionResult SendMonthlyEmail(MailRequest mailRequest)
-        //{
-
-        //var newOwner = _context.Owners.Where(c => c.Id == userId).SingleOrDefault();
-        //        _context.Add(mailRequest);
-        //        _context.SaveChanges();
-
-        //    using (var client = new HttpClient())
-        //    {
-        //        client.BaseAddress = new Uri(Baseurl);
-        //        client.DefaultRequestHeaders.Clear();
-        //    }
-
-        //        return RedirectToAction(nameof(Index));
-
-
-        //}
-
+        public IActionResult EmailMonthlySubscriber()
+        {
+            var emailSubscribers = _context.Customers.Where(c => c.Subscribe == true).ToList();
+            return View(emailSubscribers);
+        }
 
         // GET: Owners/Details/5
         public IActionResult Details(int? id)

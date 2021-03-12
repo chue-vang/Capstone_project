@@ -22,6 +22,8 @@ namespace HersFlowers.Models
         [Display(Name = "Email")]
         public string Email { get; set; }
 
+        [DisplayFormat(DataFormatString = "{0:###-###-####}")]
+        [DataType(DataType.PhoneNumber)]
         [Display(Name = "Phone Number")]
         public double PhoneNumber { get; set; }
 

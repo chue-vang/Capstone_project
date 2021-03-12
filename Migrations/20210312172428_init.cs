@@ -267,7 +267,8 @@ namespace HersFlowers.Migrations
                     LastName = table.Column<string>(nullable: true),
                     PhoneNumber = table.Column<double>(nullable: false),
                     Date = table.Column<DateTime>(nullable: true),
-                    Time = table.Column<DateTime>(nullable: true),
+                    StartTime = table.Column<DateTime>(nullable: true),
+                    EndTime = table.Column<DateTime>(nullable: true),
                     Message = table.Column<string>(nullable: true),
                     CustomerId = table.Column<int>(nullable: true)
                 },
@@ -309,8 +310,8 @@ namespace HersFlowers.Migrations
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
                 values: new object[,]
                 {
-                    { "065d4445-89a9-437f-83f0-e9524a442527", "ac5fec9f-868f-4f84-bfa8-fdb00e02db51", "Owner", "OWNER" },
-                    { "674073bc-bb30-4b0c-bc6c-5683137821b3", "b8a1c407-e4bc-4476-9233-8db152a4ef63", "Customer", "CUSTOMER" }
+                    { "7cb232bf-91ba-49e1-9d5b-e3e2e35799ea", "c9fc8946-a90a-4626-89e5-249ce50596e3", "Owner", "OWNER" },
+                    { "7f4a156e-9171-4bd9-bf08-d902fd4b40a5", "041e82a6-16fa-4f8f-858b-777f51b610cb", "Customer", "CUSTOMER" }
                 });
 
             migrationBuilder.InsertData(

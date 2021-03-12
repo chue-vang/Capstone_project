@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace HersFlowers.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20210312165838_init")]
+    [Migration("20210312172428_init")]
     partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -223,6 +223,9 @@ namespace HersFlowers.Migrations
                     b.Property<DateTime?>("Date")
                         .HasColumnType("datetime2");
 
+                    b.Property<DateTime?>("EndTime")
+                        .HasColumnType("datetime2");
+
                     b.Property<string>("FirstName")
                         .HasColumnType("nvarchar(max)");
 
@@ -235,7 +238,7 @@ namespace HersFlowers.Migrations
                     b.Property<double>("PhoneNumber")
                         .HasColumnType("float");
 
-                    b.Property<DateTime?>("Time")
+                    b.Property<DateTime?>("StartTime")
                         .HasColumnType("datetime2");
 
                     b.HasKey("Id");
@@ -298,15 +301,15 @@ namespace HersFlowers.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "065d4445-89a9-437f-83f0-e9524a442527",
-                            ConcurrencyStamp = "ac5fec9f-868f-4f84-bfa8-fdb00e02db51",
+                            Id = "7cb232bf-91ba-49e1-9d5b-e3e2e35799ea",
+                            ConcurrencyStamp = "c9fc8946-a90a-4626-89e5-249ce50596e3",
                             Name = "Owner",
                             NormalizedName = "OWNER"
                         },
                         new
                         {
-                            Id = "674073bc-bb30-4b0c-bc6c-5683137821b3",
-                            ConcurrencyStamp = "b8a1c407-e4bc-4476-9233-8db152a4ef63",
+                            Id = "7f4a156e-9171-4bd9-bf08-d902fd4b40a5",
+                            ConcurrencyStamp = "041e82a6-16fa-4f8f-858b-777f51b610cb",
                             Name = "Customer",
                             NormalizedName = "CUSTOMER"
                         });

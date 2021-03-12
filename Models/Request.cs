@@ -19,12 +19,19 @@ namespace HersFlowers.Models
         [DataType(DataType.PhoneNumber)]
         public double PhoneNumber { get; set; }
 
-        [DisplayFormat(DataFormatString = "{0:dd MMM yyyy}")]
+        [DisplayFormat(DataFormatString = "{0:dddd, dd MMMM yyyy}")]
         [DataType(DataType.Date)]
         public DateTime? Date { get; set; }
 
-        [DisplayFormat(DataFormatString = "{0:hh:mm tt}")]
-        public DateTime? Time { get; set; }
+        [Display(Name = "Start Time")]
+        [DisplayFormat(DataFormatString = "{0:h:mm tt}")]
+        [DataType(DataType.Time)]
+        public DateTime? StartTime { get; set; }
+
+        [Display(Name = "End Time")]
+        [DisplayFormat(DataFormatString = "{0:h:mm tt}")]
+        public DateTime? EndTime { get; set; }
+
         public string? Message { get; set; }
 
         [ForeignKey("Customer")]

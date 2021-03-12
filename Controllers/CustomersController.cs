@@ -150,8 +150,14 @@ namespace HersFlowers.Controllers
             var newCustomer = _context.Customers.Where(c => c.IdentityUserId == userId).SingleOrDefault();
             newCustomer.Subscribe = true;
             _context.SaveChanges();
-            return RedirectToAction(nameof(Index));//redirect to index
+            return RedirectToAction(nameof(Index));
+        }
 
+        public IActionResult ViewOwnerSchedule()
+        {
+
+            var schedule = _context.Requests.ToList();
+            return View(schedule);
         }
 
         // GET: Customers/Details/5

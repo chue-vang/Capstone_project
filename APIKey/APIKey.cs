@@ -5,12 +5,13 @@ using System.Threading.Tasks;
 
 namespace HersFlowers.APIKey
 {
-    public static class APIKey
+    public  class APIKey
     {
-        private static string googleMapKey = "";
-        public static string GoogleMapKey
+        public string googleKey { get; set; }
+
+        public APIKey()
         {
-            get => googleMapKey;
+            googleKey = "";
         }
     }
 }

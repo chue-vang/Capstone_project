@@ -14,8 +14,16 @@ namespace HersFlowers.Models
         public int Id { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
+
+        [DisplayFormat(DataFormatString = "{0:###-###-####}")]
+        [DataType(DataType.PhoneNumber)]
         public double PhoneNumber { get; set; }
+
+        [DisplayFormat(DataFormatString = "{0:dd MMM yyyy}")]
+        [DataType(DataType.Date)]
         public DateTime? Date { get; set; }
+
+        [DisplayFormat(DataFormatString = "{0:hh:mm tt}")]
         public DateTime? Time { get; set; }
         public string? Message { get; set; }
 

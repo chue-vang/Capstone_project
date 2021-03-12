@@ -6,6 +6,7 @@
 }
 
 <h1>Index</h1>
+<a asp-action="Subscribe" asp-route-id="">Subscribe to Our Monthly Email</a> |
 <a asp-action="RequestMeeting" asp-route-id="">Request a Meeting</a> |
 <a asp-action="Product" asp-route-id="">Product</a> |
 <a asp-action="ShoppingCart" asp-route-id="">Shopping Cart</a>
@@ -38,26 +39,9 @@
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.PhoneNumber)
         </dd>
-
-
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Subscribe)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Subscribe)
-        </dd>
-        @*<dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.IdentityUser)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.IdentityUser.Id)
-            </dd>*@
     </dl>
 
-    @*<div class="col-md-4">
-            <label asp-for="Subscribe" class="control-label">Subscribe to a monthly email to see what flowers we have!</label>
-            <input asp-for="Subscribe" class="form-check-input me-2" type="checkbox" value="" id="Subscribe" checked />
-        </div>*@
+
 
 </div>
 <div>

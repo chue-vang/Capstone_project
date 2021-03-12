@@ -51,44 +51,42 @@ namespace HersFlowers.Controllers
             return View(shoppingCartFlower);
         }
 
-        public IActionResult AddToCart(Flower flower, int? id)
+        public IActionResult AddToCart(int? id)
         {
+            
             return View();
         }
 
+        //
+        //
+        //Method does not work for adding a new item to the cart, will need to fix
+        //Only works for updating an existing cart
+        //
         [HttpPost]
-        public IActionResult AddToCart(ShoppingCartItem shoppingCartItem,  Flower flower, int? id)
+        public IActionResult AddToCart(ShoppingCartItem shoppingCartItem, int? id)
         {
             var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
             var customer = _context.Customers.Where(c => c.IdentityUserId == userId).SingleOrDefault();
-            //ShoppingCartItem newShoppingCartItem = new ShoppingCartItem();
-            shoppingCartItem.Total = 15 * shoppingCartItem.Quantity;
-            shoppingCartItem.CustomerId = customer.Id;
-            shoppingCartItem.FlowerId = flower.Id;
+            var flower = _context.Flowers.Where(f => f.Id == id).FirstOrDefault();
+            ShoppingCartItem newShoppingCartItem = new ShoppingCartItem();
+            newShoppingCartItem.Quantity = shoppingCartItem.Quantity;
+            newShoppingCartItem.Total = flower.Price * shoppingCartItem.Quantity;
+            newShoppingCartItem.CustomerId = customer.Id;
+            newShoppingCartItem.FlowerId = flower.Id;
 
-            _context.ShoppingCartItems.Update(shoppingCartItem);
+            _context.ShoppingCartItems.Add(newShoppingCartItem);
             _context.SaveChanges();
 
             return RedirectToAction("ShoppingCart");
         }
 
-
-
         public IActionResult ShoppingCart()
         {
-            //ShoppingCartItem shoppingCartItem = new ShoppingCartItem();
+          
             var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
             var customer = _context.Customers.Where(c => c.IdentityUserId == userId).SingleOrDefault();
-            var cart = _context.ShoppingCartItems.Where(s => s.Id == customer.Id).ToList();
-
-            //List<ShoppingCartItem> shoppingCart = new List<ShoppingCartItem>();
-           
-
-            //foreach ( var item in cart)
-            //    if (item.CustomerId == customer.Id)
-            //    {
-            //        shoppingCart.Add(item);
-            //    }
+            var flower = _context.Flowers.Where(f => f.Id == customer.Id).FirstOrDefault();
+            var cart = _context.ShoppingCartItems.Where(s => s.CustomerId == customer.Id).ToList();
 
             return View(cart);
         }
@@ -137,15 +135,24 @@ namespace HersFlowers.Controllers
             }            
         }
 
-        //public IActionResult RequestMeeting()
-        //{
-        //    var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
-        //    var customer = _context.Customers.Where(c => c.IdentityUserId == userId).SingleOrDefault();
-        //    List<Request> requests = new List<Request>();
-        //    requests.
+        //Get Subscribe
+        public IActionResult Subscribe(int id)
+        {
+            var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var customer = _context.Customers.Where(c => c.IdentityUserId == userId).SingleOrDefault();
+            return View(customer);
+        }
 
-        //}
+        [HttpPost]
+        public IActionResult Subscribe(int id, Customer customer)
+        {
+            var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var newCustomer = _context.Customers.Where(c => c.IdentityUserId == userId).SingleOrDefault();
+            newCustomer.Subscribe = true;
+            _context.SaveChanges();
+            return RedirectToAction(nameof(Index));//redirect to index
 
+        }
 
         // GET: Customers/Details/5
         public ActionResult Details(int id)
@@ -171,10 +178,7 @@ namespace HersFlowers.Controllers
             try
             {
                 var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
-                customer.IdentityUserId = userId;
-
-                
-
+                customer.IdentityUserId = userId;               
                 _context.Add(customer);
                 _context.SaveChanges();
                 return RedirectToAction(nameof(Index));

@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace HersFlowers.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20210311170147_init")]
+    [Migration("20210312011830_init")]
     partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -298,15 +298,15 @@ namespace HersFlowers.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "0a20e69b-7e26-4bbb-8fb6-66c2952b083f",
-                            ConcurrencyStamp = "9f0d9458-94fe-4798-8cee-d56087ff8968",
+                            Id = "c2bf9293-4fb3-4a26-a691-8781afe6b746",
+                            ConcurrencyStamp = "7dd5b249-1952-4853-86e0-e14f53df69d9",
                             Name = "Owner",
                             NormalizedName = "OWNER"
                         },
                         new
                         {
-                            Id = "265adaf8-3cae-4efd-9eaf-f7460f7c00c5",
-                            ConcurrencyStamp = "cfa38932-c9c7-4e08-b8a4-d192802d9354",
+                            Id = "2f44a620-f18f-435f-85de-d2a20733780e",
+                            ConcurrencyStamp = "aa2b888b-7ff8-4ec7-9ce7-69b7ab116fc0",
                             Name = "Customer",
                             NormalizedName = "CUSTOMER"
                         });

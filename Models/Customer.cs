@@ -25,7 +25,7 @@ namespace HersFlowers.Models
         [Display(Name = "Phone Number")]
         public double PhoneNumber { get; set; }
 
-        [Display(Name = "Subscribe To Monthly Email")]
+        [Display(Name = "Subscribe To Our Monthly Email")]
         public bool? Subscribe { get; set; }
 
         [ForeignKey("IdentityUser")]

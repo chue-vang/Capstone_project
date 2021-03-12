@@ -6,7 +6,7 @@
 }
 
 <h1>ShoppingCart</h1>
-
+<a asp-action="Product" asp-route-id="">Product</a> |
 
 <table class="table">
     <thead>
@@ -21,22 +21,22 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Quantity)
-            </td>
-            <td>
-               $@Html.DisplayFor(modelItem => item.Total)
-            </td>
-            <td>
-                
-            </td>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Quantity)
+                </td>
+                <td>
+                    $@Html.DisplayFor(modelItem => item.Total)
+                </td>
+                <td>
+                </td>
 
-            <td>
-                <a asp-action="UpdateCart" asp-route-id="@item.Id">Update Cart</a>
-            </td>
-        </tr>
-}
+                @*<td>
+                        <a asp-action="UpdateCart" asp-route-id="@item.Id">Update Cart</a>
+                    </td>*@
+            </tr>
+        }
     </tbody>
 </table>

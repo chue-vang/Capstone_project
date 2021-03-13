@@ -1,7 +1,12 @@
 ﻿body {
+    margin: 0;
 }
 
-#splashImage {
+html {
+    box-sizing: border-box;
+}
+
+#homeHeader {
     background-image: url(/images/SplashImage.jpg);
     background-size: cover;
     background-position: center;
@@ -12,4 +17,26 @@
     flex-direction: column;
     height: 100vh;
     position: relative;
+}
+
+homeHeader::after {
+    content: "";
+    position: absolute;
+    background-color: #000;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    opacity: 0.4;
+}
+
+header h1 {
+    font-size: 80px;
+}
+
+.about-section {
+    padding: 50px;
+    text-align: center;
+    background-color: #959FAE;
+    color: white;
 }

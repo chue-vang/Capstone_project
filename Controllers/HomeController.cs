@@ -1,4 +1,5 @@
-﻿using HersFlowers.Models;
+﻿using HersFlowers.APIKey;
+using HersFlowers.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Docs.Samples;
 using Microsoft.Extensions.Logging;
@@ -34,20 +35,22 @@ namespace HersFlowers.Controllers
             return View();
         }
 
-
         [HttpPost]
         public IActionResult BouquetCalculator(string LargeQuantity, string SmallQuantity)
         {
             double largeBouqet = Convert.ToDouble(LargeQuantity);
-            double smallBouquet = Convert.ToDouble(SmallQuantity);
+            //double smallBouquet = Convert.ToDouble(SmallQuantity);
             ViewBag.LargeTotal = largeBouqet * 15;
-            ViewBag.SmallTotal = smallBouquet * 10;
+            //ViewBag.SmallTotal = smallBouquet * 10;
             ViewBag.Total = ViewBag.LargeTotal + ViewBag.SmallTotal;
             return View("Services");
         }
 
         public IActionResult Contact()
         {
+            APIKeys apiKey = new APIKeys();
+            var googleKey = apiKey.ToString();
+            ViewBag.key = googleKey;
             return View();
         }
 

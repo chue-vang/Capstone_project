@@ -350,7 +350,7 @@ MigrationBackup/
 .ionide/
 
 #Ignore APIKey file
-.APIKey.cs
+APIKey.cs
 
 # APIKey folder ignore
 **/APIKey/**

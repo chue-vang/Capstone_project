@@ -1,32 +1,40 @@
 ﻿@model IEnumerable<HersFlowers.Models.Request>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "FilterByDays";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Requested Meeting Schedule</h1>
-
-
+<h1>Filter Your Meetings By the Day of the Week</h1>
 
 <p>
     <a asp-action="Edit" asp-route-id="@ViewBag.Id">Edit Your Profile</a> |
-    <a asp-action="FilterByDays" asp-route-id="@ViewBag.Id" asp-controller="Owners">Filter Meetings by Day</a> |
+    <a asp-action="FilterByDays" asp-controller="Owners">Filter Meetings by Day</a> |
     <a asp-action="EmailMonthlySubscriber">Check Monthly Email Subscriber</a> |
     <a asp-action="SendMonthlyEmail" asp-controller="Mail">Send Out Monthly Emails</a>
 </p>
 
-<table class="table">
+<select id="DayOfWeek" name="DayOfWeek" asp-items="Html.GetEnumSelectList<DayOfWeek>()">
+    <option value="">Select a Day</option>
+
+</select>
+
+<div>
+    <a asp-action="FilterByDays">Click to Filter</a> |
+</div>
+
+
+@*<table class="table">
     <thead>
         <tr>
             <th>
-                First Name
+                @Html.DisplayNameFor(model => model.FirstName)
             </th>
             <th>
-                Last Name
+                @Html.DisplayNameFor(model => model.LastName)
             </th>
             <th>
-                Phone Number
+                @Html.DisplayNameFor(model => model.PhoneNumber)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Date)
@@ -40,14 +48,14 @@
             <th>
                 @Html.DisplayNameFor(model => model.Message)
             </th>
-            @*<th>
-                Monthly Email Subscription
-            </th>*@
+            <th>
+                @Html.DisplayNameFor(model => model.Customer)
+            </th>
+            <th></th>
         </tr>
     </thead>
     <tbody>
-        @foreach (var item in Model)
-        {
+@foreach (var item in Model) {
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.FirstName)
@@ -70,15 +78,15 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Message)
             </td>
-            @*<td>
-                @Html.DisplayFor(modelItem => item.Customer.Subscribe)
+            <td>
+                @Html.DisplayFor(modelItem => item.Customer.Id)
             </td>*@
             @*<td>
-            <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-            <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-            <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-        </td>*@
-        </tr>
-        }
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>*@
+        @*</tr>
+}
     </tbody>
-</table>
+</table>*@

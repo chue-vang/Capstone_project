@@ -24,19 +24,10 @@ namespace HersFlowers.Controllers
             return View();
         }
 
-        //public IActionResult Privacy()
-        //{
-        //    return View();
-        //}
-
         public IActionResult About()
         {
             return View();
         }
-        //public IActionResult RequestAppointment()
-        //{
-        //    return View();
-        //}
 
         public IActionResult Services()
         {
@@ -54,19 +45,6 @@ namespace HersFlowers.Controllers
             ViewBag.Total = ViewBag.LargeTotal + ViewBag.SmallTotal;
             return View("Services");
         }
-
-
-        //[HttpPost]
-        //public IActionResult Services(Calculator calculator)
-        //{
-        //    int largeBouquetPrice = 15;
-        //    int smallBouquetPrice = 10;
-        //    calculator.largeBouquetTotal = largeBouquetPrice * calculator.largeBouquetUserInput;
-        //    calculator.smallBouquetTotal = smallBouquetPrice * calculator.smallBouquetUserInput;
-        //    calculator.total = calculator.largeBouquetTotal + calculator.smallBouquetTotal;
-        //    return View(calculator.total);
-        //}
-
 
         public IActionResult Contact()
         {

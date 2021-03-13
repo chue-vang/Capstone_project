@@ -39,6 +39,6 @@ namespace HersFlowers.Models
         public Customer Customer { get; set; }
 
         [NotMapped]
-        public SelectList FilterDays { get; set; }
+        public DayOfWeek DayOfWeek { get; set; }
     }
 }

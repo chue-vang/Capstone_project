@@ -84,49 +84,12 @@ namespace HersFlowers.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("Day")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("DayOfWeek")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
                     b.ToTable("DayOfTheWeeks");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Day = "Sunday"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Day = "Monday"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            Day = "Tuesday"
-                        },
-                        new
-                        {
-                            Id = 4,
-                            Day = "Wednesday"
-                        },
-                        new
-                        {
-                            Id = 5,
-                            Day = "Thursday"
-                        },
-                        new
-                        {
-                            Id = 6,
-                            Day = "Friday"
-                        },
-                        new
-                        {
-                            Id = 7,
-                            Day = "Saturday"
-                        });
                 });
 
             modelBuilder.Entity("HersFlowers.Models.Flower", b =>
@@ -299,15 +262,15 @@ namespace HersFlowers.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "7cb232bf-91ba-49e1-9d5b-e3e2e35799ea",
-                            ConcurrencyStamp = "c9fc8946-a90a-4626-89e5-249ce50596e3",
+                            Id = "3a8183fe-b7a4-4b1a-911b-a9b70eac7244",
+                            ConcurrencyStamp = "cf262a69-dd4c-4773-8887-81bbad2e1093",
                             Name = "Owner",
                             NormalizedName = "OWNER"
                         },
                         new
                         {
-                            Id = "7f4a156e-9171-4bd9-bf08-d902fd4b40a5",
-                            ConcurrencyStamp = "041e82a6-16fa-4f8f-858b-777f51b610cb",
+                            Id = "2357fca8-dc57-43bb-8dad-61d9b789bc96",
+                            ConcurrencyStamp = "254cc9e0-b073-44cd-b6ae-659b7e6fd0e4",
                             Name = "Customer",
                             NormalizedName = "CUSTOMER"
                         });

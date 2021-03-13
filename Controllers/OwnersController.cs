@@ -37,23 +37,38 @@ namespace HersFlowers.Controllers
             else
             {
                 ViewBag.Id = owner.Id;
-                var allRequestedMeetings = _context.Requests;
+                var allRequestedMeetings = _context.Requests.OrderBy(r => r.Date).ThenBy(r => r.StartTime).ToList();
                 return View(allRequestedMeetings);
             }
         }
 
         //filter meetings by day
-        public IActionResult FilterMeetingByDay(int id)
+        public IActionResult FilterByDays()
         {
-            //var request = _context.Requests.SingleOrDefault(c => c.Id == id);
-            //if (request == null)
-            //{
-            //    return NotFound();
-            //}
-            //request.FilterDays = new SelectList(_context.DayOfTheWeeks.ToList(), "Id", "Day");
-            //return View(request);
 
+            var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var owner = _context.Owners.Where(c => c.IdentityUserId == userId).SingleOrDefault();
+            var filterDays = _context.Requests.Where(r => r.Id == owner.Id).ToList();
             return View();
+        }
+
+        [HttpPost]
+        public IActionResult FilterByDays(int? id)
+        {
+            DayOfTheWeek dayOfTheWeek = new DayOfTheWeek();
+            var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var owner = _context.Owners.Where(c => c.IdentityUserId == userId).SingleOrDefault();
+            var currentDay = DateTime.Today.DayOfWeek;
+            //var filteredDays = _context.Requests.Where(r => r.Date.Value.DayOfWeek == currentDay).ToList();
+            if (dayOfTheWeek.DayOfWeek == DayOfWeek.Monday)
+            {
+                var filterDay = _context.Requests.Where(r => r.Date.Value.DayOfWeek == currentDay).ToList();
+                return View(filterDay);
+            }
+            else
+            {
+                return RedirectToAction(nameof(Index));
+            }
         }
 
         public IActionResult EmailMonthlySubscriber()

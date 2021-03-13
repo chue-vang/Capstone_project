@@ -12,6 +12,7 @@ namespace HersFlowers.Models
         public int Id { get; set; }
 
         [Display(Name = "Meeting Day")]
-        public string Day { get; set; }
+        public DayOfWeek DayOfWeek { get; set; }
+
     }
 }

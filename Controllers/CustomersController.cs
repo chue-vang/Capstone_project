@@ -156,7 +156,7 @@ namespace HersFlowers.Controllers
         public IActionResult ViewOwnerSchedule()
         {
 
-            var schedule = _context.Requests.ToList();
+            var schedule = _context.Requests.OrderBy(r => r.Date).ThenBy(r => r.StartTime).ToList();
             return View(schedule);
         }
 

@@ -42,37 +42,39 @@ namespace HersFlowers.Controllers
             }
         }
 
-        //filter meetings by day
-        public IActionResult FilterByDays()
-        {
+        //public IActionResult FilterByDays()
+        //{
 
-            var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
-            var owner = _context.Owners.Where(c => c.IdentityUserId == userId).SingleOrDefault();
-            var filterDays = _context.Requests.Where(r => r.Id == owner.Id).ToList();
-            return View();
-        }
+        //    var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
+        //    var owner = _context.Owners.Where(c => c.IdentityUserId == userId).SingleOrDefault();
+        //    var filterDays = _context.Requests.Where(r => r.Id == owner.Id).ToList();
+        //    return View();
+        //}
 
-        [HttpPost]
-        public IActionResult FilterByDays(int? id)
-        {
-            DayOfTheWeek dayOfTheWeek = new DayOfTheWeek();
-            var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
-            var owner = _context.Owners.Where(c => c.IdentityUserId == userId).SingleOrDefault();
-            var currentDay = DateTime.Today.DayOfWeek;
-            //var filteredDays = _context.Requests.Where(r => r.Date.Value.DayOfWeek == currentDay).ToList();
-            if (dayOfTheWeek.DayOfWeek == DayOfWeek.Monday)
-            {
-                var filterDay = _context.Requests.Where(r => r.Date.Value.DayOfWeek == currentDay).ToList();
-                return View(filterDay);
-            }
-            else
-            {
-                return RedirectToAction(nameof(Index));
-            }
-        }
+        //[HttpPost]
+        //public IActionResult FilterByDays(int? id)
+        //{
+        //    DayOfTheWeek dayOfTheWeek = new DayOfTheWeek();
+        //    var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
+        //    var owner = _context.Owners.Where(c => c.IdentityUserId == userId).SingleOrDefault();
+        //    var currentDay = DateTime.Today.DayOfWeek;
+        //    //var filteredDays = _context.Requests.Where(r => r.Date.Value.DayOfWeek == currentDay).ToList();
+        //    if (dayOfTheWeek.DayOfWeek == DayOfWeek.Monday)
+        //    {
+        //        var filterDay = _context.Requests.Where(r => r.Date.Value.DayOfWeek == currentDay).ToList();
+        //        return View(filterDay);
+        //    }
+        //    else
+        //    {
+        //        return RedirectToAction(nameof(Index));
+        //    }
+        //}
 
         public IActionResult EmailMonthlySubscriber()
         {
+            var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var owner = _context.Owners.Where(c => c.IdentityUserId == userId).SingleOrDefault();
+            ViewBag.Id = owner.Id;
             var emailSubscribers = _context.Customers.Where(c => c.Subscribe == true).ToList();
             return View(emailSubscribers);
         }

@@ -17,21 +17,25 @@
 
     </div>
 </div>
-
-
-    <div>
-        <h6>Boquet Estimator Calculator</h6>
-        <form action="BouquetCalculator" method="post">
-            <td>Large bouquets $15/each</td>
-            <td><input type="text" placeholder="Enter Quantity" name="LargeQuantity" size="30" onfocus="value=''" /></td>
-            <td></td>
-            <td> Total: $@ViewBag.LargeTotal <br /></td>
-
-            @*<td>Small bouquets $10/each</td>
-            <td><input type="text" placeholder="Enter Quantity" name="SmallQuantity" size="30" onfocus="value=''" /></td>
-            <td></td>
-            <td> Total: $ @ViewBag.SmallTotal <br /></td>*@
-
-            <td colspan="2"><input type="submit" value="Calculate" /></td>@*<td>Combined Total: $ @ViewBag.Total</td>*@
-        </form>
-    </div>
+<form action="BouquetCalculator" method="post">
+    <table class="table w-auto">
+        <thead>
+            <tr>
+                <th scope="col">Bouquest Estimator Calculator</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td scope="row">Bouquet: $15/each</td>
+            </tr>
+            <tr>
+                <td><input type="text" placeholder="Enter Quantity" name="LargeQuantity" /></td>
+            </tr>
+            <tr>
+                <td>Total: $@ViewBag.LargeTotal</td>
+            </tr>
+            <tr>
+                <td><input type="submit" value="Calculate" class="btn btn-primary"/></td>
+            </tr>
+    </table>
+</form>

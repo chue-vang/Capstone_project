@@ -4,18 +4,22 @@
     ViewData["Title"] = "Subscribe";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-<h4>Subscribe To Our Monthly Email Service</h4>
-
+<br />
+<h1>Subscribe To Our Monthly Email Service</h1>
+<p>
+    <a asp-action="Index" asp-route-id="@Model.Id">Home</a> |
+    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
+    <a asp-action="Subscribe" asp-route-id="">Subscribe to Our Monthly Email</a> |
+    <a asp-action="RequestMeeting" asp-route-id="">Request a Meeting</a> |
+    <a asp-action="Product" asp-route-id="">Product</a> |
+    <a asp-action="ShoppingCart" asp-route-id="">Shopping Cart</a> |
+    <a asp-action="ViewOwnerSchedule" asp-route-id="">View Owner's Schedule</a>
+</p>
 
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Subscribe">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-
-            <div class="form-group form-check">
-                <label asp-for="Subscribe" class="form-check-label">Click to Subscribe!</label>
-            </div>
 
             <div class="form-group">
                 <input type="submit" value="Subscribe" class="btn btn-primary" />

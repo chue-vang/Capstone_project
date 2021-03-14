@@ -41,13 +41,13 @@ namespace HersFlowers.Controllers
 
         //GET Products
         public IActionResult Product(int? id)
-        {
+        {            
             ShoppingCartFlowerViewModel shoppingCartFlower = new ShoppingCartFlowerViewModel();
             var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
             var customer = _context.Customers.Where(c => c.IdentityUserId == userId).SingleOrDefault();
             var flowerProducts = _context.Flowers.ToList();
             shoppingCartFlower.Flowers = flowerProducts;
-            
+            ViewBag.Id = customer.Id;
             return View(shoppingCartFlower);
         }
 
@@ -57,11 +57,6 @@ namespace HersFlowers.Controllers
             return View();
         }
 
-        //
-        //
-        //Method does not work for adding a new item to the cart, will need to fix
-        //Only works for updating an existing cart
-        //
         [HttpPost]
         public IActionResult AddToCart(ShoppingCartItem shoppingCartItem, int? id)
         {
@@ -81,36 +76,35 @@ namespace HersFlowers.Controllers
         }
 
         public IActionResult ShoppingCart()
-        {
-          
+        {          
             var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
             var customer = _context.Customers.Where(c => c.IdentityUserId == userId).SingleOrDefault();
             var flower = _context.Flowers.Where(f => f.Id == customer.Id).FirstOrDefault();
             var cart = _context.ShoppingCartItems.Where(s => s.CustomerId == customer.Id).ToList();
-
+            ViewBag.Id = customer.Id;
             return View(cart);
         }
 
         //GET UpdateCart
-        public IActionResult UpdateCart(Flower flower, int? id)
-        {
-            return View();
-        }
+        //public IActionResult UpdateCart(int? id)
+        //{
+        //    return View();
+        //}
 
+        //[HttpPost]
+        //public IActionResult UpdateCart(ShoppingCartItem shoppingCartItem, Flower flower, int? id)
+        //{
+        //    var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
+        //    var customer = _context.Customers.Where(c => c.IdentityUserId == userId).SingleOrDefault();
+        //    //var flower = _context.Flowers.Where(f => f.Id == id).FirstOrDefault();
+        //    shoppingCartItem.Total = flower.Price * shoppingCartItem.Quantity;
+        //    shoppingCartItem.CustomerId = customer.Id;
+        //    shoppingCartItem.FlowerId = flower.Id;
+        //    _context.ShoppingCartItems.Update(shoppingCartItem);
+        //    _context.SaveChanges();
 
-        [HttpPost]
-        public IActionResult UpdateCart(ShoppingCartItem shoppingCartItem, Flower flower, int? id)
-        {
-            var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
-            var customer = _context.Customers.Where(c => c.IdentityUserId == userId).SingleOrDefault();
-            shoppingCartItem.Total = 15 * shoppingCartItem.Quantity;
-            shoppingCartItem.CustomerId = customer.Id;
-            shoppingCartItem.FlowerId = flower.Id;
-            _context.ShoppingCartItems.Update(shoppingCartItem);
-            _context.SaveChanges();
-
-            return RedirectToAction("ShoppingCart");
-        }
+        //    return RedirectToAction("ShoppingCart");
+        //}
 
         public IActionResult RequestMeeting(int? id)
         {            
@@ -121,6 +115,7 @@ namespace HersFlowers.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult RequestMeeting(Request request, Customer customer) // pass customer to get customer id
         {
+            ViewBag.Id = customer.Id;
             var userId = customer.Id;
             var newCustomer = _context.Customers.Where(c => c.Id == userId).SingleOrDefault();
             if (customer != null)
@@ -155,7 +150,9 @@ namespace HersFlowers.Controllers
 
         public IActionResult ViewOwnerSchedule()
         {
-
+            var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var customer = _context.Customers.Where(c => c.IdentityUserId == userId).SingleOrDefault();
+            ViewBag.Id = customer.Id;
             var schedule = _context.Requests.OrderBy(r => r.Date).ThenBy(r => r.StartTime).ToList();
             return View(schedule);
         }

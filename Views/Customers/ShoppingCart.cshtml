@@ -4,11 +4,18 @@
     ViewData["Title"] = "ShoppingCart";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
+<br />
 <h1>ShoppingCart</h1>
-<a asp-action="Product" asp-route-id="">Product</a> |
-
-<table class="table">
+<p>
+    <a asp-action="Index" asp-route-id="@ViewBag.Id">Home</a> |
+    <a asp-action="Edit" asp-route-id="@ViewBag.Id">Edit</a> |
+    <a asp-action="Subscribe" asp-route-id="">Subscribe to Our Monthly Email</a> |
+    <a asp-action="RequestMeeting" asp-route-id="">Request a Meeting</a> |
+    <a asp-action="Product" asp-route-id="">Product</a> |
+    <a asp-action="ShoppingCart" asp-route-id="">Shopping Cart</a> |
+    <a asp-action="ViewOwnerSchedule" asp-route-id="">View Owner's Schedule</a>
+</p>
+<table class="table table-hover table-bordered">
     <thead>
         <tr>
             <th>
@@ -32,10 +39,9 @@
                 </td>
                 <td>
                 </td>
-
                 @*<td>
-                        <a asp-action="UpdateCart" asp-route-id="@item.Id">Update Cart</a>
-                    </td>*@
+                    <a asp-action="UpdateCart" asp-route-id="@item.Id">Update Cart</a>
+                </td>*@
             </tr>
         }
     </tbody>

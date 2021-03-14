@@ -12,6 +12,7 @@ namespace HersFlowers.Models
     {
         [Key]
         public int Id { get; set; }
+
         [StringLength(255)]
         public string Path { get; set; }
 

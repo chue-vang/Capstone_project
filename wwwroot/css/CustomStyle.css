@@ -1,5 +1,8 @@
-﻿body {
+﻿@import url('https://fonts.googleapis.com/css2?family=Euphoria+Script&display=swap');
+
+body {
     margin: 0;
+    padding: 0px;
 }
 
 html {
@@ -41,5 +44,16 @@ header h1 {
     color: black;
 }
 
+.my-element {
+    display: inline-block;
+    margin: 0 0.5rem;
+    animation: bounce;
+    animation-duration: 2s;
+}
 
-
+#homeh1 {
+    font-family: 'Euphoria Script', cursive;
+    font-size: 280px;
+    color: white;
+    text-shadow: -1px 0 1px black, 1px 0 1px black, 0 -1px 1px black;
+}

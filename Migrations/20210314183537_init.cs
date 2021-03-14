@@ -308,12 +308,12 @@ namespace HersFlowers.Migrations
             migrationBuilder.InsertData(
                 table: "AspNetRoles",
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
-                values: new object[] { "3a8183fe-b7a4-4b1a-911b-a9b70eac7244", "cf262a69-dd4c-4773-8887-81bbad2e1093", "Owner", "OWNER" });
+                values: new object[] { "ffa4f393-9734-4f94-9839-967ac4fc9501", "70375353-0b67-418c-ba26-82d73e2b8622", "Owner", "OWNER" });
 
             migrationBuilder.InsertData(
                 table: "AspNetRoles",
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
-                values: new object[] { "2357fca8-dc57-43bb-8dad-61d9b789bc96", "254cc9e0-b073-44cd-b6ae-659b7e6fd0e4", "Customer", "CUSTOMER" });
+                values: new object[] { "1b948379-5e02-47e4-befb-eb08689f31b6", "d64ddf06-aa27-40fa-9c9d-996e199cdc55", "Customer", "CUSTOMER" });
 
             migrationBuilder.InsertData(
                 table: "Flowers",

@@ -12,7 +12,7 @@
     <a asp-action="Edit" asp-route-id="@ViewBag.Id">Edit Your Profile</a> |
     @*<a asp-action="FilterByDays" asp-route-id="@ViewBag.Id" asp-controller="Owners">Filter Meetings by Day</a> |*@
     <a asp-action="EmailMonthlySubscriber">Check Your Monthly Email Subscribers</a> |
-    <a asp-action="SendMonthlyEmail" asp-controller="Mail">Send Out Your Monthly Emails</a>
+    <a asp-action="SendMonthlyEmail" asp-controller="Mail">Send Out Your Monthly Emails</a>|
     <a asp-action="UploadImages" asp-controller="Owners">Upload Images</a>
 </p>
 
@@ -37,13 +37,9 @@
             <th>
                 Phone Number
             </th>
-
             <th>
                 @Html.DisplayNameFor(model => model.Message)
             </th>
-            @*<th>
-            Monthly Email Subscription
-        </th>*@
         </tr>
     </thead>
     <tbody>
@@ -68,18 +64,9 @@
             <td>
                 @Html.DisplayFor(modelItem => item.PhoneNumber)
             </td>
-
             <td>
                 @Html.DisplayFor(modelItem => item.Message)
             </td>
-            @*<td>
-            @Html.DisplayFor(modelItem => item.Customer.Subscribe)
-        </td>*@
-            @*<td>
-            <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-            <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-            <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-        </td>*@
         </tr>
         }
     </tbody>

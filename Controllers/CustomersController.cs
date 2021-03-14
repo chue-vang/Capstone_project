@@ -130,7 +130,6 @@ namespace HersFlowers.Controllers
             }            
         }
 
-        //Get Subscribe
         public IActionResult Subscribe(int id)
         {
             var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);

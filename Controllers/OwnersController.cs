@@ -43,6 +43,9 @@ namespace HersFlowers.Controllers
         }
         public IActionResult UploadImages()
         {
+            var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var owner = _context.Owners.Where(c => c.IdentityUserId == userId).SingleOrDefault();
+            ViewBag.Id = owner.Id;
             ImageViewModel viewModel = new ImageViewModel();
             viewModel.imageList = _context.Images.ToList();
             viewModel.image = new Image();

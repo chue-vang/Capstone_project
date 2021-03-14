@@ -4,13 +4,17 @@
     ViewData["Title"] = "EmailMonthlySubscriber";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-<h1>EmailMonthlySubscriber</h1>
+<br />
+<h1>Email Monthly Subscribers</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Edit" asp-route-id="@ViewBag.Id">Edit Your Profile</a> |
+    @*<a asp-action="FilterByDays" asp-route-id="@ViewBag.Id" asp-controller="Owners">Filter Meetings by Day</a> |*@
+    <a asp-action="EmailMonthlySubscriber">Check Your Monthly Email Subscribers</a> |
+    <a asp-action="SendMonthlyEmail" asp-controller="Mail">Send Out Your Monthly Emails</a>
 </p>
-<table class="table">
+
+<table class="table table-hover table-bordered">
     <thead>
         <tr>
             <th>
@@ -26,8 +30,6 @@
             <th>
                 Subscription Status
             </th>
-
-            <th></th>
         </tr>
     </thead>
     <tbody>
@@ -42,15 +44,8 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Email)
             </td>
-
             <td>
                 @Html.DisplayFor(modelItem => item.Subscribe)
-            </td>
-
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
             </td>
         </tr>
 }

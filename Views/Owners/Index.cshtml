@@ -5,17 +5,16 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <br />
-<h1>Requested Meeting Schedule</h1>
-
+<h1 style="text-shadow: 2px 2px 2px black; color:floralwhite" class="text-center font-weight-bold shadow-sm">Requested Meeting Schedule</h1>
+<br />
 <p>
     <a class="text-light text-decoration-none" asp-action="Index" asp-route-id="@ViewBag.Id">Home</a> |
     <a class="text-light text-decoration-none" asp-action="Edit" asp-route-id="@ViewBag.Id">Edit Your Profile</a> |
-    @*<a asp-action="FilterByDays" asp-route-id="@ViewBag.Id" asp-controller="Owners">Filter Meetings by Day</a> |*@
     <a class="text-light text-decoration-none" asp-action="EmailMonthlySubscriber">Check Your Monthly Email Subscribers</a> |
     <a class="text-light text-decoration-none" asp-action="SendMonthlyEmail" asp-controller="Mail">Send Out Your Monthly Emails</a> |
     <a class="text-light text-decoration-none" asp-action="UploadImages" asp-controller="Owners">Upload Images</a>
 </p>
-
+<br />
 <table class="table table-striped table-bordered bg-light text-dark">
     <thead class="thead-dark">
         <tr>

@@ -5,20 +5,21 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <br />
-<h1>Edit Your Information</h1>
+<h1 style="text-shadow: 2px 2px 2px black; color:floralwhite" class="text-center font-weight-bold shadow-sm">Edit Your Profile</h1>
+<br />
 <p>
-    <a asp-action="Index" asp-route-id="@Model.Id">Home</a> |
-    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
-    <a asp-action="Subscribe" asp-route-id="">Subscribe to Our Monthly Email</a> |
-    <a asp-action="ViewOwnerSchedule" asp-route-id="">View Owner's Schedule</a> |
-    <a asp-action="RequestMeeting" asp-route-id="">Request a Meeting</a> |
-    <a asp-action="Product" asp-route-id="">Product</a> |
-    <a asp-action="ShoppingCart" asp-route-id="">Shopping Cart</a> |
+    <a class="text-light text-decoration-none" asp-action="Index" asp-route-id="@Model.Id">Home</a> |
+    <a class="text-light text-decoration-none" asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
+    <a class="text-light text-decoration-none" asp-action="Subscribe" asp-route-id="">Subscribe to Our Monthly Email</a> |
+    <a class="text-light text-decoration-none" asp-action="ViewOwnerSchedule" asp-route-id="">View Owner's Schedule</a> |
+    <a class="text-light text-decoration-none" asp-action="RequestMeeting" asp-route-id="">Request a Meeting</a> |
+    <a class="text-light text-decoration-none" asp-action="Product" asp-route-id="">Product</a> |
+    <a class="text-light text-decoration-none" asp-action="ShoppingCart" asp-route-id="">Shopping Cart</a> |
 </p>
+<br />
 
-<hr />
 <div class="row">
-    <div class="col-md-4">
+    <div class="col-md-4 ml-lg-5">
         <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="Id" />
@@ -49,9 +50,7 @@
     </div>
 </div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
+
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

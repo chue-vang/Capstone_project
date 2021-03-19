@@ -5,18 +5,18 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <br />
-<h1>Edit Your Information</h1>
+<h1 style="text-shadow: 2px 2px 2px black; color:floralwhite" class="text-center font-weight-bold shadow-sm">Edit Your Profile</h1>
+<br />
 <p>
-    <a asp-action="Index" asp-route-id="@ViewBag.Id">Home</a> |
-    <a asp-action="Edit" asp-route-id="@ViewBag.Id">Edit Your Profile</a> |
-    @*<a asp-action="FilterByDays" asp-route-id="@ViewBag.Id" asp-controller="Owners">Filter Meetings by Day</a> |*@
-    <a asp-action="EmailMonthlySubscriber">Check Your Monthly Email Subscribers</a> |
-    <a asp-action="SendMonthlyEmail" asp-controller="Mail">Send Out Your Monthly Emails</a> |
-    <a asp-action="UploadImages" asp-controller="Owners">Upload Images</a>
+    <a class="text-light text-decoration-none" asp-action="Index" asp-route-id="@ViewBag.Id">Home</a> |
+    <a class="text-light text-decoration-none" asp-action="Edit" asp-route-id="@ViewBag.Id">Edit Your Profile</a> |
+    <a class="text-light text-decoration-none" asp-action="EmailMonthlySubscriber">Check Your Monthly Email Subscribers</a> |
+    <a class="text-light text-decoration-none" asp-action="SendMonthlyEmail" asp-controller="Mail">Send Out Your Monthly Emails</a> |
+    <a class="text-light text-decoration-none" asp-action="UploadImages" asp-controller="Owners">Upload Images</a>
 </p>
-<hr />
+<br />
 <div class="row">
-    <div class="col-md-4">
+    <div class="col-md-4 ml-lg-5">
         <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="Id" />
@@ -42,9 +42,7 @@
     </div>
 </div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
+
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

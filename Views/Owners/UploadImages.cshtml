@@ -3,34 +3,35 @@
     ViewData["Title"] = "UploadImages";
 }
 <br />
-<h1>Upload Images</h1>
+<h1 style="text-shadow: 2px 2px 2px black; color:floralwhite" class="text-center font-weight-bold shadow-sm">Upload Images</h1>
+<br />
 <p>
-    <a asp-action="Index" asp-route-id="@ViewBag.Id">Home</a> |
-    <a asp-action="Edit" asp-route-id="@ViewBag.Id">Edit Your Profile</a> |
-    @*<a asp-action="FilterByDays" asp-route-id="@ViewBag.Id" asp-controller="Owners">Filter Meetings by Day</a> |*@
-    <a asp-action="EmailMonthlySubscriber">Check Your Monthly Email Subscribers</a> |
-    <a asp-action="SendMonthlyEmail" asp-controller="Mail">Send Out Your Monthly Emails</a> |
-    <a asp-action="UploadImages" asp-controller="Owners">Upload Images</a>
+    <a class="text-light text-decoration-none" asp-action="Index" asp-route-id="@ViewBag.Id">Home</a> |
+    <a class="text-light text-decoration-none" asp-action="Edit" asp-route-id="@ViewBag.Id">Edit Your Profile</a> |
+    <a class="text-light text-decoration-none" asp-action="EmailMonthlySubscriber">Check Your Monthly Email Subscribers</a> |
+    <a class="text-light text-decoration-none" asp-action="SendMonthlyEmail" asp-controller="Mail">Send Out Your Monthly Emails</a> |
+    <a class="text-light text-decoration-none" asp-action="UploadImages" asp-controller="Owners">Upload Images</a>
 </p>
+<br />
 <div class="col-12">
-    <div class="card">
+    <div class="card p-3 mb-2" style="background-color: #dacbc6">
         <div class="card-header">
             <div class="text-center"><strong>Photo Gallery</strong></div>
         </div>
         <div class="card-body">
             <form class="form-horizontal" asp-action="AddPhotos" asp-controller="Owners" method="post" enctype="multipart/form-data">
-                    <div class="col-md-6 col-sm-6">
-                        <div class="form-group row">
-                            <label class="col-sm-2 col-form-label">Upload Photo</label>
-                            <div class="col-sm-6 custom-file">
-                                <input asp-for="@Model.image.filePhoto" type="file" class="custom-file-input" multiple="multiple">
-                                <label class="custom-file-label" for="@Model.image.filePhoto">Choose file</label>
-                                <span asp-validation-for="@Model.image.filePhoto" class="text-danger"></span>
-                            </div>
-                            <div class="col-sm-4"> <button type="submit" class="btn btn-primary">Upload</button></div>
+                <div class="col-md-6 col-sm-6">
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">Upload Photo</label>
+                        <div class="col-sm-6 custom-file">
+                            <input asp-for="@Model.image.filePhoto" type="file" class="custom-file-input" multiple="multiple">
+                            <label class="custom-file-label" for="@Model.image.filePhoto">Choose file</label>
+                            <span asp-validation-for="@Model.image.filePhoto" class="text-danger"></span>
                         </div>
+                        <div class="col-sm-4"> <button type="submit" class="btn btn-primary">Upload</button></div>
                     </div>
-                </form>
+                </div>
+            </form>
             <br />
             <div class="row">
                 @if (Model.imageList != null)

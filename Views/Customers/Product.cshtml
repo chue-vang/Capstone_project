@@ -5,18 +5,20 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <br />
-<h1>Products</h1>
+<h1 style="text-shadow: 2px 2px 2px black; color:floralwhite" class="text-center font-weight-bold shadow-sm">Product</h1>
+<br />
 <p>
-    <a asp-action="Index" asp-route-id="@ViewBag.Id">Home</a> |
-    <a asp-action="Edit" asp-route-id="@ViewBag.Id">Edit</a> |
-    <a asp-action="Subscribe" asp-route-id="">Subscribe to Our Monthly Email</a> |
-    <a asp-action="ViewOwnerSchedule" asp-route-id="">View Owner's Schedule</a> |
-    <a asp-action="RequestMeeting" asp-route-id="">Request a Meeting</a> |
-    <a asp-action="Product" asp-route-id="">Product</a> |
-    <a asp-action="ShoppingCart" asp-route-id="">Shopping Cart</a> |
+    <a class="text-light text-decoration-none" asp-action="Index" asp-route-id="@ViewBag.Id">Home</a> |
+    <a class="text-light text-decoration-none" asp-action="Edit" asp-route-id="@ViewBag.Id">Edit</a> |
+    <a class="text-light text-decoration-none" asp-action="Subscribe" asp-route-id="">Subscribe to Our Monthly Email</a> |
+    <a class="text-light text-decoration-none" asp-action="ViewOwnerSchedule" asp-route-id="">View Owner's Schedule</a> |
+    <a class="text-light text-decoration-none" asp-action="RequestMeeting" asp-route-id="">Request a Meeting</a> |
+    <a class="text-light text-decoration-none" asp-action="Product" asp-route-id="">Product</a> |
+    <a class="text-light text-decoration-none" asp-action="ShoppingCart" asp-route-id="">Shopping Cart</a> |
 </p>
-<table class="table table-hover table-bordered">
-    <thead>
+<br />
+<table class="table table-striped table-bordered bg-light text-dark">
+    <thead class="thead-dark">
         <tr>
             <th>
                 Name
@@ -24,21 +26,25 @@
             <th>
                 Price
             </th>
+            <th>
+
+            </th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model.Flowers) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Price)
-            </td>
-            <td>
-                <a asp-action="AddToCart" asp-route-id="@item.Id">Add to Cart</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model.Flowers)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Price)
+                </td>
+                <td>
+                    <a asp-action="AddToCart" asp-route-id="@item.Id">Add to Cart</a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>

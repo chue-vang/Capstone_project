@@ -6,11 +6,18 @@
 }
 
 <br />
-<h4>Send Your Monthly Emails</h4>
-
-<hr />
+<h1 style="text-shadow: 2px 2px 2px black; color:floralwhite" class="text-center font-weight-bold shadow-sm">Send Your Monthly Emails</h1>
+<br />
+<p>
+    <a class="text-light text-decoration-none" asp-action="Index" asp-route-id="@ViewBag.Id">Home</a> |
+    <a class="text-light text-decoration-none" asp-action="Edit" asp-route-id="@ViewBag.Id">Edit Your Profile</a> |
+    <a class="text-light text-decoration-none" asp-action="EmailMonthlySubscriber">Check Your Monthly Email Subscribers</a> |
+    <a class="text-light text-decoration-none" asp-action="SendMonthlyEmail" asp-controller="Mail">Send Out Your Monthly Emails</a> |
+    <a class="text-light text-decoration-none" asp-action="UploadImages" asp-controller="Owners">Upload Images</a>
+</p>
+<br />
 <div class="row">
-    <div class="col-md-4">
+    <div class="col-md-4 ml-lg-5">
         <form asp-action="SendMonthlyEmail">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">

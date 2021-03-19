@@ -4,21 +4,30 @@
     ViewData["Title"] = "AddToCart";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<br />
+<h1 style="text-shadow: 2px 2px 2px black; color:floralwhite" class="text-center font-weight-bold shadow-sm">Add To Cart</h1>
+<br />
+<p>
+    <a class="text-light text-decoration-none" asp-action="Index" asp-route-id="@ViewBag.Id">Home</a> |
+    <a class="text-light text-decoration-none" asp-action="Edit" asp-route-id="@ViewBag.Id">Edit</a> |
+    <a class="text-light text-decoration-none" asp-action="Subscribe" asp-route-id="">Subscribe to Our Monthly Email</a> |
+    <a class="text-light text-decoration-none" asp-action="ViewOwnerSchedule" asp-route-id="">View Owner's Schedule</a> |
+    <a class="text-light text-decoration-none" asp-action="RequestMeeting" asp-route-id="">Request a Meeting</a> |
+    <a class="text-light text-decoration-none" asp-action="Product" asp-route-id="">Product</a> |
+    <a class="text-light text-decoration-none" asp-action="ShoppingCart" asp-route-id="">Shopping Cart</a> |
+</p>
+<br />
 
-<h1>Add Product To Cart</h1>
-
-
-<hr />
 
 <div class="row">
-    <div class="col-md-4">
+    <div class="col-md-4 ml-lg-5">
         <form asp-action="AddToCart" method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="Id" />
 
             <div class="form-group">
                 <label name="userInput" asp-for="Quantity" class="control-label">Quantity</label>
-                <input type="text" asp-for="Quantity" class="form-control" placeholder="Enter Quantity"/>
+                <input type="text" asp-for="Quantity" class="form-control" placeholder="Enter Quantity" />
                 <span asp-validation-for="Quantity" class="text-danger"></span>
             </div>
 
@@ -29,9 +38,7 @@
     </div>
 </div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
+
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

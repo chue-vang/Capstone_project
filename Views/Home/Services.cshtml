@@ -9,7 +9,7 @@
 <br />
 <div style="margin: auto" class="w-75">
     <div class="card p-3 mb-2" style="background-color: #dacbc6">
-        <h5 class="card-header text-center">Our Services</h5>
+        <h5 class="card-header text-center"><strong>Our Services</strong></h5>
         <div class="card-body">
             <p class="card-text">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec et mollis ipsum, non congue neque.
@@ -25,23 +25,23 @@
     <br />
     <div style="margin: auto" class="w-25">
         <form action="BouquetCalculator" method="post">
-            <table class="table table-striped table-dark">
-                <thead>
-                    <tr class="table-dark">
-                        <th scope="col" class="text-dark">Bouquet Estimator Calculator</th>
+            <table class="table table-bordered">
+                <thead style="background-color: #dacbc6; color: black">
+                    <tr>
+                        <th scope="col">Bouquet Estimator Calculator</th>
                     </tr>
                 </thead>
-                <tbody>
-                    <tr class="table-dark">
-                        <td scope="row" class="text-dark">Bouquet: $15/each</td>
+                <tbody style="background-color: #dacbc6; color: black">
+                    <tr>
+                        <td scope="row">Bouquet: $15/each</td>
                     </tr>
-                    <tr class="table-dark">
+                    <tr>
                         <td><input type="text" placeholder="Enter Quantity" name="LargeQuantity" /></td>
                     </tr>
-                    <tr class="table-dark text-dark">
+                    <tr>
                         <td>Total: $@ViewBag.LargeTotal</td>
                     </tr>
-                    <tr class="table-dark">
+                    <tr>
                         <td><input type="submit" value="Calculate" class="btn btn-primary" /></td>
                     </tr>
             </table>

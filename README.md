@@ -5,3 +5,4 @@ Solo project built during a 10 day sprint.  Web application which allows a small
 A few features accessible to the small business owner is the ability to manage their requested meetings from customers, a Google Map with a dropped pin of their business location, the ability to send out monthly email newsletters, and a photo gallery to show case their products.
 
 [View the demo here!](https://vimeo.com/532283172)
+![alt text](https://www.chue-vang.com/static/b0794b4a89c8af92802f9533aed9aacd/e03bc/HersFlowers.png)
